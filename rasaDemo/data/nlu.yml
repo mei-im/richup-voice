@@ -79,6 +79,38 @@ nlu:
     - Faz a jogada
     - Faz a minha jogada
 
+# - intent: end_turn
+#   examples: |
+#   - Acabei a minha jogada
+#   - Acabei
+#   - Terminei
+#   - Próximo
+#   - Próxima jogada
+
+# - intent: buy_house
+#   examples: |
+#   - Quero comprar a casa
+#   - Quero a casa, por favor
+#   - Quero comprar essa propriedade
+#   - Quero a propriedade, por favor
+#   - Vou comprar a casa
+#   - Vou ficar com a casa
+#   - Vou ficar com a propriedade
+#   - Posso ficar com a casa
+#   - Posso ficar com essa propriedade
+#   - Fico com a casa
+#   - Fico com a propriedade
+#   - Compro a casa
+#   - Compro a propriedade
+#   - Compro
+#   - Quero comprar
+#   - Quero comprar esta casa 
+#   - Pago o [140]{price} pela casa
+#   - Pago o [600]{price} pela propriedade
+
+
+
+
 
 
 

@@ -35,7 +35,10 @@ async def message_handler(game: Game, message:str):
                 print("No house found")
         elif intent == "roll_dice":
             print("Roll dice")
-            # game.button.roll_dice.click()
+            game.roll_dice()
+        elif intent == "end_turn":
+            print("End turn")
+            game.end_turn()
         else:
             print(f"Command not found: {message}")
     else:

@@ -12,6 +12,9 @@ class Game:
         self.input = Inputs(self.browser)
         self.house = Houses(self.browser)
         # aceitar cookies
+        time.sleep(2)
+        self.button.accept_cookies.click()
+
 
     def join_game(self, name):
         self.input.name.send_keys(name)
@@ -24,6 +27,15 @@ class Game:
         house.click()
         # time.sleep(10)
         # fechar a janela de informação da casa
+
+    def roll_dice(self):
+        self.button.roll_dice.click()
+
+    def end_turn(self):
+        self.button.end_turn.click()
+
+    def buy(self):
+        self.button.buy.click()
 
     def close(self):
         self.browser.close()
