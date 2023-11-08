@@ -22,7 +22,7 @@ async def message_handler(game: Game, message:str):
                     house_name = message["entities"][0]["value"].lower()
                     if house_name in houses:
                         house_name = houses[house_name]
-                        print("House found")
+                        print(f"House name: {house_name}")
                         game.list_house_information(house_name)
                     else:
                         # todo responder por voz que não foi encontrado
@@ -30,15 +30,12 @@ async def message_handler(game: Game, message:str):
                 else:
                     # todo responder por voz que não foi encontrado
                     print("No house found")
-            # await game.start_game()
-        # elif message["intent"]["intentName"] == "roll_dice":
-        #     await game.roll_dice()
-        # elif message["intent"]["intentName"] == "end_turn":
-        #     await game.end_turn()
-        # elif message["intent"]["intentName"] == "buy":
-        #     await game.buy()
-        # elif message["intent"]["intentName"] == "build":
-        #     await game.build()
+            else:
+                # todo responder por voz que não foi encontrado
+                print("No house found")
+        elif intent == "roll_dice":
+            print("Roll dice")
+            # game.button.roll_dice.click()
         else:
             print(f"Command not found: {message}")
     else:
@@ -77,6 +74,8 @@ async def main():
 
     except Exception as e:
         print(f"Error: {e}")
+
+    game.close()
 
 if __name__ == "__main__":
     import asyncio

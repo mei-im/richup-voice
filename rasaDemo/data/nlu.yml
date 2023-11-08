@@ -53,7 +53,7 @@ nlu:
     - Ver detalhes da propriedade [muc airport](house)
     - Ver casa de [milan](house)
     - Ver propriedade [Venice](house)
-    - Quanto custa a casa [paris](house)
+    - Quanto custa a casa [São Francisco](house)
     - Quanto custa a propriedade [liverpool](house)
     - Quanto vale a casa [manchester](house)
     - Quanto vale a propriedade [london](house)
@@ -65,6 +65,19 @@ nlu:
     - Quanto vou pagar naquela casa em [shanghai](house)
     - Quanto vou pagar naquela propriedade em [cdg airport](house)
     - Abrir [tlv airport](house)
+
+- intent: roll_dice
+  examples: |
+    - Lança os dados
+    - Lança os dados, por favor
+    - Joga os dados
+    - Quero lançar os dados
+    - Manda os dados
+    - Lança
+    - Joga
+    - Faz o lançamento
+    - Faz a jogada
+    - Faz a minha jogada
 
 
 

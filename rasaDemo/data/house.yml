@@ -36,7 +36,7 @@ nlu:
     - Telavive 
     - Londres
     - Veneza
-    - Companhia elétrica
+    - Companhia da luz
     - Companhia de água
     - Milão 
     - Roma
@@ -44,7 +44,16 @@ nlu:
     - Munique
     - Pequim
     - Xangai
-    - tlv aeroporto
-    - muc aeroporto
-    - cdg aeroporto
-    - jfk aeroporto
+    - aeroporto tlv
+    - aeroporto muc 
+    - aeroporto cdg 
+    - aeroporto jfk
+    - cdg
+    - jfk
+    - tlv
+    - muc
+    - luz
+    - água
+    - electricidade
+    - jerusalém
+    - milão

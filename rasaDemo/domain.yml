@@ -5,6 +5,7 @@ intents:
 - affirm
 - deny
 - information_house
+- roll_dice
 
 entities:
 - house

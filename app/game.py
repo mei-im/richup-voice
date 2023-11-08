@@ -24,3 +24,6 @@ class Game:
         house.click()
         # time.sleep(10)
         # fechar a janela de informação da casa
+
+    def close(self):
+        self.browser.close()
