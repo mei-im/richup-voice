@@ -1,4 +1,3 @@
-
 houses = {  
     "salvador" : "salvador", 
     "rio": "rio",
@@ -56,3 +55,30 @@ houses = {
     "jerusalém": "jerusalem",
     "milão": "milan",
     }
+
+
+colors = {
+    "lime": "lime",
+    "yellow": "yellow",
+    "orange": "orange",
+    "red": "red",
+    "blue": "blue",
+    "cyan": "cyan",
+    "water": "water",
+    "green": "green",
+    "brown": "brown",
+    "hotpink": "hotpink",
+    "purple": "purple",
+    "pink": "pink",
+    "amarelo": "yellow",
+    "laranja": "orange",
+    "vermelho": "red",
+    "azul": "blue",
+    "ciano": "cyan",
+    "verde": "green",
+    "marrom": "brown",
+    "rosa": "pink",
+    "roxo": "purple",
+    "água": "water",
+    "agua": "water",
+}

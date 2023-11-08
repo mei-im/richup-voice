@@ -16,6 +16,7 @@ async def message_handler(game: Game, message:str):
         return "OK"
     elif message["intent"]["name"]:
         intent = message["intent"]["name"]
+        
         if intent == "information_house":
             if message["entities"]:
                 if len(message["entities"]) > 0:

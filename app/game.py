@@ -11,7 +11,6 @@ class Game:
         self.button = Buttons(self.browser)
         self.input = Inputs(self.browser)
         self.house = Houses(self.browser)
-        # aceitar cookies
         time.sleep(2)
         self.button.accept_cookies.click()
 
@@ -25,10 +24,9 @@ class Game:
     def list_house_information(self,house_name):
         house = self.house.__getattribute__(house_name)
         house.click()
-        # time.sleep(10)
-        # fechar a janela de informação da casa
 
     def roll_dice(self):
+        # verificar se o botão de rolar os dados está habilitado
         self.button.roll_dice.click()
 
     def end_turn(self):
