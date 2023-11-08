@@ -1,0 +1,77 @@
+version: "3.1"
+nlu:  
+- intent: greet
+  examples: |
+    - Oi Assistente
+    - Bom dia, Assistente
+    - Boa tarde, Assistente
+    - Boa noite, Assistente
+    - Olá Assistente
+    - Olá assistente
+    - olá
+    - olá assistente
+    - olá assistnete
+    
+- intent: goodbye
+  examples: |
+    - Xau, Assistente
+    - Adeus, Assistente
+    - Até logo, Assistente
+    - Boa noite, Assistente
+    - Até amanhã, Assistente
+
+- intent: affirm
+  examples: |
+    - Sim
+    - Claro
+    - Parece-me bem
+    - Correto
+    - Okay
+    - Ok
+    - sim
+
+- intent: deny
+  examples: |
+    - Não
+    - Nope
+    - Nunca
+    - Acho que não
+    - Não gosto assim
+    - Nem por isso
+ 
+- intent: information_house
+  examples: |
+    - Mostra-me [rio](house)
+    - Mostra-me as informações da propriedade [tlv airport](house)
+    - Mostra-me a casa [salvador](house)
+    - Mostra-me a propriedade [tlv airport](house)
+    - Informação sobre [london](house)
+    - Quero saber mais sobre [new york](house)
+    - Ver [berlin](house)
+    - Ver detalhes de [munich](house)
+    - Ver detalhes da casa [frankfurt](house)
+    - Ver detalhes da propriedade [muc airport](house)
+    - Ver casa de [milan](house)
+    - Ver propriedade [Venice](house)
+    - Quanto custa a casa [paris](house)
+    - Quanto custa a propriedade [liverpool](house)
+    - Quanto vale a casa [manchester](house)
+    - Quanto vale a propriedade [london](house)
+    - Quanto vale [Paris](house)
+    - Quanto custa um hotel em [xangai](house)
+    - Quanto custa uma casa em [haifa](house)
+    - Quero saber o preço da casa [shenzhen](house)
+    - Quero saber o preço da propriedade [beijing](house)
+    - Quanto vou pagar naquela casa em [shanghai](house)
+    - Quanto vou pagar naquela propriedade em [cdg airport](house)
+    - Abrir [tlv airport](house)
+
+
+
+
+
+
+
+
+    
+

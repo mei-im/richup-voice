@@ -1,0 +1,50 @@
+version: "3.1"
+nlu:  
+- lookup: house
+  examples: |
+    - salvador
+    - rio
+    - tlv airport
+    - tel aviv
+    - haifa
+    - jerusalem
+    - venice
+    - electric company
+    - milan
+    - rome
+    - muc airport
+    - frankfurt
+    - munich
+    - berlin
+    - shenzhen
+    - beijing
+    - shanghai
+    - cdg airport
+    - lyon
+    - toulouse
+    - water company
+    - paris
+    - liverpool
+    - manchester
+    - london
+    - jfk airport
+    - san francisco
+    - new york
+    - Nova Iorque
+    - São Francisco
+    - Paris
+    - Telavive 
+    - Londres
+    - Veneza
+    - Companhia elétrica
+    - Companhia de água
+    - Milão 
+    - Roma
+    - Berlim
+    - Munique
+    - Pequim
+    - Xangai
+    - tlv aeroporto
+    - muc aeroporto
+    - cdg aeroporto
+    - jfk aeroporto
