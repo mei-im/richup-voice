@@ -56,6 +56,15 @@ async def message_handler(game: Game, message:str):
         elif intent == "end_turn":
             print("End turn")
             game.end_turn()
+        elif intent == "buy_house":
+            print("buy_house")
+            game.buy()
+        elif intent == "join_game":
+            print("join_game")
+            game.join_game_after_color()
+        elif intent == "start_game":
+            print("start_game")
+            game.start_game()
         else:
             print(f"Command not found: {message}")
     else:

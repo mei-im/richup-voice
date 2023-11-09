@@ -97,6 +97,8 @@ nlu:
     - Eu sou o [vermelho](color)
     - Jogo como [green](color)
     - cor [vermelho](color)
+    - Mudar para [vermelho](color)
+    - Mudar para a cor [yellow](color)
   
 
 - intent: end_turn
@@ -110,26 +112,48 @@ nlu:
     - Terminar jogada
     - Terminar turn 
 
-# - intent: buy_house
-#   examples: |
-#   - Quero comprar a casa
-#   - Quero a casa, por favor
-#   - Quero comprar essa propriedade
-#   - Quero a propriedade, por favor
-#   - Vou comprar a casa
-#   - Vou ficar com a casa
-#   - Vou ficar com a propriedade
-#   - Posso ficar com a casa
-#   - Posso ficar com essa propriedade
-#   - Fico com a casa
-#   - Fico com a propriedade
-#   - Compro a casa
-#   - Compro a propriedade
-#   - Compro
-#   - Quero comprar
-#   - Quero comprar esta casa 
-#   - Pago o [140](price) pela casa
-#   - Pago o [600](price) pela propriedade
+- intent: buy_house
+  examples: |
+    - Quero comprar a casa
+    - Quero a casa, por favor
+    - Quero comprar essa propriedade
+    - Quero a propriedade, por favor
+    - Vou comprar a casa
+    - Vou ficar com a casa
+    - Vou ficar com a propriedade
+    - Posso ficar com a casa
+    - Posso ficar com essa propriedade
+    - Fico com a casa
+    - Fico com a propriedade
+    - Compro a casa
+    - Compro a propriedade
+    - Compro
+    - Quero comprar
+    - Quero comprar esta casa 
+    - Pago o [140](price) pela casa
+    - Pago o [600](price) pela propriedade
+
+- intent: join_game
+  examples: |
+    - juntar 
+    - juntar-me
+    - juntar-me ao jogo
+    - colocar-me no jogo
+
+- intent: start_game
+  examples: |
+    - começar jogo 
+    - start jogo
+    - começar
+    - start
+    - iniciar
+    - iniciar jogo
+    - iniciar o jogo
+    - Vamos começar
+    - Vamos começar o jogo
+
+
+# INTENT PLAY QUE MUDA CONSOANTE O JOGO- Falar com o gui 
 
 
 

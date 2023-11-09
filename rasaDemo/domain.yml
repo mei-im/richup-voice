@@ -8,10 +8,14 @@ intents:
 - roll_dice
 - choose_color
 - end_turn
+- buy_house
+- start_game
+- join_game
 
 entities:
 - house
 - color
+- price
 
 slots:
   switch:
@@ -32,6 +36,12 @@ slots:
     mappings:
     - type: from_entity
       entity: color
+  price:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: price
   
   
 responses:

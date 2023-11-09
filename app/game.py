@@ -34,7 +34,7 @@ class Game:
         color.click()
 
     def roll_dice(self):
-        # Check if the roll the dice text is correct
+        # TODO : Check if the element is present
         text = self.button.roll_dice.text
         if text == 'Roll the dice':
             self.button.roll_dice.click()
@@ -43,7 +43,7 @@ class Game:
             # raise GameException('It\'s not your turn to roll the dice')
 
     def end_turn(self):
-        # Check if the end turn text is correct
+        # TODO: ckeck if the element is present
         if self.button.end_turn.text == 'End turn':
             self.button.end_turn.click()
         else:
@@ -51,7 +51,20 @@ class Game:
             # raise GameException('It\'s not time to end the turn')
 
     def buy(self):
-        self.button.buy.click()
+        # TODO: ckeck if the element is present
+        if "Buy" in self.button.buy.text:
+            self.button.buy.click()
+        else:
+            print('You can\'t buy this house')
+            # raise GameException('You can\'t buy this house')
+
+    def join_game_after_color(self):
+        # TODO: ckeck if the element is present
+        self.button.join_game_after_color.click()
+
+    def start_game(self):
+        self.button.start_game.click()
+
 
     def close(self):
         self.browser.close()
