@@ -38,8 +38,52 @@ nlu:
     - Acho que não
     - Não gosto assim
     - Nem por isso
- 
-# DONE
+
+# - intent: insert_name 
+#   examples: |
+#   .... 
+
+- intent: create_game
+  examples: |
+    - Jogo privado
+    - Começar um jogo privado
+    - Criar um jogo privado
+    - Criar jogo privado
+    - Criar jogo
+    - Criar um jogo
+    - Quero criar um jogo
+    - Quero criar um jogo privado
+    - Quero criar uma sala
+    - Quero criar uma sala privada
+    - Criar sala privada
+    - Criar sala
+    - Criar uma sala
+    - Criar uma sala privada
+    - Criar uma sala privada para jogar
+    - Criar uma sala para jogar
+    - Começar uma sala privada
+    - Começar jogo privado
+    - Começar jogo
+    - Iniciar jogo privado
+    - Iniciar jogo
+    - Iniciar sala privada
+    - Iniciar sala
+- intent: choose_color
+  examples: |
+    - Quero ser o [vermelho](color)
+    - Quero a cor [amarela](color)
+    - Quero jogar com a cor [magenta](color)
+    - Eu escolho o [pink](color)
+    - Jogo com [azul](color)
+    - Escolho a cor [vermelho](color)
+    - Escolho o [lima](color)
+    - Quero jogar como [rosa](color)
+    - Eu sou o [vermelho](color)
+    - Jogo como [green](color)
+    - cor [vermelho](color)
+    - Mudar para [vermelho](color)
+    - Mudar para a cor [yellow](color)
+  
 - intent: information_house
   examples: |
     - Mostra-me [rio](house)
@@ -67,7 +111,18 @@ nlu:
     - Quanto vou pagar naquela propriedade em [cdg airport](house)
     - Abrir [tlv airport](house)
 
-# DONE
+- intent: start_game
+  examples: |
+    - começar jogo 
+    - start jogo
+    - começar
+    - start
+    - iniciar
+    - iniciar jogo
+    - iniciar o jogo
+    - Vamos começar
+    - Vamos começar o jogo
+
 - intent: roll_dice
   examples: |
     - Lança os dados
@@ -83,24 +138,6 @@ nlu:
     - Rola os dados
     - Atira os dados
 
-# DONE  
-- intent: choose_color
-  examples: |
-    - Quero ser o [vermelho](color)
-    - Quero a cor [amarela](color)
-    - Quero jogar com a cor [magenta](color)
-    - Eu escolho o [pink](color)
-    - Jogo com [azul](color)
-    - Escolho a cor [vermelho](color)
-    - Escolho o [lima](color)
-    - Quero jogar como [rosa](color)
-    - Eu sou o [vermelho](color)
-    - Jogo como [green](color)
-    - cor [vermelho](color)
-    - Mudar para [vermelho](color)
-    - Mudar para a cor [yellow](color)
-  
-
 - intent: end_turn
   examples: |
     - Acabei a minha jogada
@@ -111,6 +148,10 @@ nlu:
     - Próxima jogada
     - Terminar jogada
     - Terminar turn 
+    - Terminar ronda
+    - Proximo jogador
+    - Passo 
+    - Continuar jogo
 
 - intent: buy_house
   examples: |
@@ -133,25 +174,23 @@ nlu:
     - Pago o [140](price) pela casa
     - Pago o [600](price) pela propriedade
 
-- intent: join_game
-  examples: |
-    - juntar 
-    - juntar-me
-    - juntar-me ao jogo
-    - colocar-me no jogo
+# - intent: leave_prison
+#   examples: |
+#   ....
 
-- intent: start_game
-  examples: |
-    - começar jogo 
-    - start jogo
-    - começar
-    - start
-    - iniciar
-    - iniciar jogo
-    - iniciar o jogo
-    - Vamos começar
-    - Vamos começar o jogo
+# - intent: give_up_game
+#   examples: |
+#   ....
 
+- intent: close_game
+  examples: |
+    - Desligar
+    - Sair
+    - Fechar
+    - Terminar jogo
+    - Desligar jogo
+    - Sair do jogo
+    - Fechar jogo
 
 # INTENT PLAY QUE MUDA CONSOANTE O JOGO- Falar com o gui 
 

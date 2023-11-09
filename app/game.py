@@ -32,6 +32,12 @@ class Game:
     def choose_color(self, color):
         color = self.colors.__getattribute__(color)
         color.click()
+        time.sleep(4)
+        if self.button.join_game_after_color.text.lower() == 'join game':
+            self.button.join_game_after_color.click()
+        else:
+            print('You can\'t join the game')
+            # raise GameException('You can\'t join the game')
 
     def roll_dice(self):
         # TODO : Check if the element is present
@@ -58,12 +64,16 @@ class Game:
             print('You can\'t buy this house')
             # raise GameException('You can\'t buy this house')
 
-    def join_game_after_color(self):
-        # TODO: ckeck if the element is present
-        self.button.join_game_after_color.click()
-
     def start_game(self):
-        self.button.start_game.click()
+        self.button.enable_bots.click()
+        time.sleep(10)
+        # TODO AVISAR QUE OS JOGADORES ESTAO A ENTRAR
+        if self.button.start_game.text == 'Start game' and \
+            self.button.start_game.is_enabled():
+                self.button.start_game.click()
+        else:
+            print('You can\'t start the game')
+            # raise GameException('You can\'t start the game')
 
 
     def close(self):

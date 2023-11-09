@@ -4,13 +4,17 @@ intents:
 - goodbye
 - affirm
 - deny
-- information_house
-- roll_dice
+# - insert_name
+- create_game
 - choose_color
+- information_house
+- start_game
+- roll_dice
 - end_turn
 - buy_house
-- start_game
-- join_game
+# - leave_prison
+# - give_up_game
+- close_game
 
 entities:
 - house

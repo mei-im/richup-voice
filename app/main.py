@@ -1,4 +1,5 @@
 import json
+from os import system
 import xml.etree.ElementTree as ET
 import ssl
 import websockets
@@ -16,23 +17,10 @@ async def message_handler(game: Game, message:str):
         return "OK"
     elif message["intent"]["name"]:
         intent = message["intent"]["name"]
-        if intent == "information_house":
-            if message["entities"]:
-                if len(message["entities"]) > 0:
-                    house_name = message["entities"][0]["value"].lower()
-                    if house_name in houses:
-                        house_name = houses[house_name]
-                        print(f"House name: {house_name}")
-                        game.list_house_information(house_name)
-                    else:
-                        # todo responder por voz que não foi encontrado
-                        print("No house found")
-                else:
-                    # todo responder por voz que não foi encontrado
-                    print("No house found")
-            else:
-                # todo responder por voz que não foi encontrado
-                print("No house found")
+        if intent == "insert_name":
+            print("Insert name")
+        elif intent == "create_game":
+            print("Create game")
         elif intent == "choose_color":
             if message["entities"]:
                 if len(message["entities"]) > 0:
@@ -50,6 +38,26 @@ async def message_handler(game: Game, message:str):
             else:
                 # todo responder por voz que não foi encontrado
                 print("No color found")
+        elif intent == "information_house":
+            if message["entities"]:
+                if len(message["entities"]) > 0:
+                    house_name = message["entities"][0]["value"].lower()
+                    if house_name in houses:
+                        house_name = houses[house_name]
+                        print(f"House name: {house_name}")
+                        game.list_house_information(house_name)
+                    else:
+                        # todo responder por voz que não foi encontrado
+                        print("No house found")
+                else:
+                    # todo responder por voz que não foi encontrado
+                    print("No house found")
+            else:
+                # todo responder por voz que não foi encontrado
+                print("No house found")
+        elif intent == "start_game":
+            print("start_game")
+            game.start_game()
         elif intent == "roll_dice":
             print("Roll dice")
             game.roll_dice()
@@ -59,12 +67,15 @@ async def message_handler(game: Game, message:str):
         elif intent == "buy_house":
             print("buy_house")
             game.buy()
-        elif intent == "join_game":
-            print("join_game")
-            game.join_game_after_color()
-        elif intent == "start_game":
-            print("start_game")
-            game.start_game()
+        elif intent == "leave_prison":
+            print("leave_prison")
+        elif intent == "give_up_game":
+            print("give_up_game")
+        elif intent == "close_game":
+            print("close_game")
+            game.close()
+            system.exit(0)
+            
         else:
             print(f"Command not found: {message}")
     else:
@@ -103,6 +114,7 @@ async def main():
                 await message_handler(game=game, message=msg)
             except Exception as e:
                 print(f"Error: {e}")
+                break
 
     game.close()
     system.exit(0)
