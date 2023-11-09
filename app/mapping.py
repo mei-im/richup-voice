@@ -29,7 +29,7 @@ class Buttons(MapObject):
     
     @property
     def roll_dice(self):
-        return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div/div[1]/div/div[2]/div/div[1]/div/div/button')
+        return self.find_element('/html/body/div[1]/div[4]/div/div[2]/div/div/div[1]/div/div[2]/div/div[1]/div/div/button')
     
     @property
     def end_turn(self):
@@ -44,7 +44,11 @@ class Buttons(MapObject):
     
     @property
     def accept_cookies(self):
-        return self.find_element('/html/body/div[1]/div/div/div/div[2]/div/button[2]')
+        try:
+            return self.find_element('/html/body/div[1]/div/div/div/div[2]/div/button[2]')
+        except Exception:
+            return self.find_element('/html/body/div[1]/div[1]/div[2]/span[1]/a')
+        
     @property
     def buy(self):
         return self.find_element('/html/body/div[1]/div[4]/div/div[2]/div/div/div[1]/div/div[2]/div[2]/div[1]/div/button')
@@ -72,7 +76,7 @@ class Houses(MapObject):
     
     @property
     def tlv_airport(self):
-        return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div/div[3]/div[5]/div[3]/div[1]')
+        return self.find_element('/html/body/div[1]/div[4]/div/div[2]/div/div/div[3]/div[5]/div[1]')
     
     @property
     def tel_aviv(self):
@@ -92,7 +96,7 @@ class Houses(MapObject):
     
     @property
     def electric_company(self):
-        return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div/div[5]/div[2]/div[3]/div[1]')
+        return self.find_element('/html/body/div[1]/div[4]/div/div[2]/div/div/div[5]/div[2]/div[1]/div[1]')
 
     @property
     def milan(self):
@@ -104,7 +108,7 @@ class Houses(MapObject):
     
     @property
     def muc_airport(self):
-        return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div/div[5]/div[5]/div[3]/div[1]')
+        return self.find_element('/html/body/div[1]/div[4]/div/div[2]/div/div/div[5]/div[5]/div[1]/div[1]')
     
     @property
     def frankfurt(self):
@@ -132,7 +136,7 @@ class Houses(MapObject):
     
     @property
     def cdg_airport(self):
-        return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div/div[7]/div[5]/div[3]/div[1]')
+        return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div/div[7]/div[5]/div[1]/div[1]')
     
     @property
     def lyon(self):
@@ -144,7 +148,7 @@ class Houses(MapObject):
     
     @property
     def water_company(self):
-        return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div/div[7]/div[8]/div[3]/div[1]')
+        return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div/div[7]/div[8]/div[1]/div[1]')
     
     @property
     def paris(self):
@@ -164,7 +168,7 @@ class Houses(MapObject):
     
     @property
     def jfk_airport(self):
-        return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div/div[9]/div[5]/div[3]/div[1]')
+        return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div/div[9]/div[5]/div[1]/div[1]')
     
     @property
     def san_francisco(self):

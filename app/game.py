@@ -43,7 +43,12 @@ class Game:
             # raise GameException('It\'s not your turn to roll the dice')
 
     def end_turn(self):
-        self.button.end_turn.click()
+        # Check if the end turn text is correct
+        if self.button.end_turn.text == 'End turn':
+            self.button.end_turn.click()
+        else:
+            print('It\'s not time to end the turn')
+            # raise GameException('It\'s not time to end the turn')
 
     def buy(self):
         self.button.buy.click()

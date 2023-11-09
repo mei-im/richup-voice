@@ -99,14 +99,13 @@ nlu:
     - cor [vermelho](color)
   
 
-
-# - intent: end_turn
-#   examples: |
-#   - Acabei a minha jogada
-#   - Acabei
-#   - Terminei
-#   - Próximo
-#   - Próxima jogada
+- intent: end_turn
+  examples: |
+  - Acabei a minha jogada
+  - Acabei
+  - Terminei
+  - Próximo
+  - Próxima jogada
 
 # - intent: buy_house
 #   examples: |
