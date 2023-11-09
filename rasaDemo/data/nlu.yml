@@ -46,7 +46,6 @@ nlu:
 - intent: create_game
   examples: |
     - Jogo privado
-    - Começar um jogo privado
     - Criar um jogo privado
     - Criar jogo privado
     - Criar jogo
@@ -61,13 +60,7 @@ nlu:
     - Criar uma sala privada
     - Criar uma sala privada para jogar
     - Criar uma sala para jogar
-    - Começar uma sala privada
-    - Começar jogo privado
-    - Começar jogo
-    - Iniciar jogo privado
-    - Iniciar jogo
-    - Iniciar sala privada
-    - Iniciar sala
+
 - intent: choose_color
   examples: |
     - Quero ser o [vermelho](color)
@@ -83,6 +76,7 @@ nlu:
     - cor [vermelho](color)
     - Mudar para [vermelho](color)
     - Mudar para a cor [yellow](color)
+    - Quero manter a cor [blue](color)
   
 - intent: information_house
   examples: |
@@ -113,11 +107,11 @@ nlu:
 
 - intent: start_game
   examples: |
+    - Começar
+    - start 
+    - iniciar
     - começar jogo 
     - start jogo
-    - começar
-    - start
-    - iniciar
     - iniciar jogo
     - iniciar o jogo
     - Vamos começar
@@ -142,8 +136,7 @@ nlu:
   examples: |
     - Acabei a minha jogada
     - Acabei a jogada
-    - Acabei
-    - Terminei
+    - Acabar jogada
     - Próximo
     - Próxima jogada
     - Terminar jogada
@@ -187,10 +180,21 @@ nlu:
     - Desligar
     - Sair
     - Fechar
+    - Terminar
     - Terminar jogo
     - Desligar jogo
     - Sair do jogo
     - Fechar jogo
+
+- intent: help
+  examples: |
+    - Ajuda
+    - Preciso de ajuda
+    - Ajuda-me
+    - Ajuda por favor
+    - Ajuda-me por favor
+    - Preciso de ajuda por favor
+    - Preciso de ajuda, por favor
 
 # INTENT PLAY QUE MUDA CONSOANTE O JOGO- Falar com o gui 
 

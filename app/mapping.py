@@ -54,9 +54,9 @@ class Buttons(MapObject):
         return self.find_element('/html/body/div[2]/div[4]/div[1]/div[1]/div[2]/div[1]/div/div[2]/div[1]/button[2]')
 
 class Inputs(MapObject):
-        @property
-        def name(self):
-            return self.find_element('/html/body/div/div[4]/div[1]/div[1]/div[2]/div[1]/div/div[1]/div[1]/div/input')
+    @property
+    def name(self):
+        return self.find_element('/html/body/div/div[4]/div[1]/div[1]/div[2]/div[1]/div/div[1]/div[1]/div/input')
 
 
 
