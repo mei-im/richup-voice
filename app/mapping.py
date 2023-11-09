@@ -8,6 +8,7 @@ class MapObject:
     def find_element(self, xpath):
         return self.browser.find_element(By.XPATH, xpath)
 
+
 class Buttons(MapObject):
 
     @property
@@ -31,10 +32,6 @@ class Buttons(MapObject):
         return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div/div[1]/div/div[2]/div/div[1]/div/div/button')
     
     @property
-    def verify_element_roll_dice(self):
-        return self.verify_element('/html/body/div[2]/div[4]/div/div[2]/div/div/div[1]/div/div[2]/div/div[1]/div/div/button')
-    
-    @property
     def end_turn(self):
         try:  
             return self.find_element('/html/body/div[1]/div[4]/div/div[2]/div/div/div[1]/div/div[2]/div[1]/div[1]/div/div/button')
@@ -48,7 +45,6 @@ class Buttons(MapObject):
     @property
     def accept_cookies(self):
         return self.find_element('/html/body/div[1]/div/div/div/div[2]/div/button[2]')
-    
     @property
     def buy(self):
         return self.find_element('/html/body/div[1]/div[4]/div/div[2]/div/div/div[1]/div/div[2]/div[2]/div[1]/div/button')

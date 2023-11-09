@@ -56,7 +56,6 @@ houses = {
     "milão": "milan",
     }
 
-
 colors = {
     "lime": "lime",
     "yellow": "yellow",
@@ -81,4 +80,8 @@ colors = {
     "roxo": "purple",
     "água": "water",
     "agua": "water",
+    "castanho": "brown",
+    "lima": "lime",
+    "magenta": "hotpink",
+    "castanha": "brown",
 }

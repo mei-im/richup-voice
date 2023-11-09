@@ -6,9 +6,11 @@ intents:
 - deny
 - information_house
 - roll_dice
+- choose_color
 
 entities:
 - house
+- color
 
 slots:
   switch:
@@ -23,6 +25,13 @@ slots:
     mappings:
     - type: from_entity
       entity: house
+  color:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: color
+  
   
 responses:
   utter_greet:

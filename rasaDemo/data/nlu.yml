@@ -39,6 +39,7 @@ nlu:
     - Não gosto assim
     - Nem por isso
  
+# DONE
 - intent: information_house
   examples: |
     - Mostra-me [rio](house)
@@ -66,6 +67,7 @@ nlu:
     - Quanto vou pagar naquela propriedade em [cdg airport](house)
     - Abrir [tlv airport](house)
 
+# DONE
 - intent: roll_dice
   examples: |
     - Lança os dados
@@ -78,6 +80,25 @@ nlu:
     - Faz o lançamento
     - Faz a jogada
     - Faz a minha jogada
+    - Rola os dados
+    - Atira os dados
+
+# DONE  
+- intent: choose_color
+  examples: |
+    - Quero ser o [vermelho](color)
+    - Quero a cor [amarela](color)
+    - Quero jogar com a cor [magenta](color)
+    - Eu escolho o [pink](color)
+    - Jogo com [azul](color)
+    - Escolho a cor [vermelho](color)
+    - Escolho o [lima](color)
+    - Quero jogar como [rosa](color)
+    - Eu sou o [vermelho](color)
+    - Jogo como [green](color)
+    - cor [vermelho](color)
+  
+
 
 # - intent: end_turn
 #   examples: |
@@ -105,8 +126,8 @@ nlu:
 #   - Compro
 #   - Quero comprar
 #   - Quero comprar esta casa 
-#   - Pago o [140]{price} pela casa
-#   - Pago o [600]{price} pela propriedade
+#   - Pago o [140](price) pela casa
+#   - Pago o [600](price) pela propriedade
 
 
 

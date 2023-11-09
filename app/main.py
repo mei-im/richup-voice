@@ -4,7 +4,7 @@ import ssl
 import websockets
 
 from game import Game
-from dictionarys import houses
+from dictionarys import houses,colors
 
 HOST = "localhost"
 
@@ -16,7 +16,6 @@ async def message_handler(game: Game, message:str):
         return "OK"
     elif message["intent"]["name"]:
         intent = message["intent"]["name"]
-        
         if intent == "information_house":
             if message["entities"]:
                 if len(message["entities"]) > 0:
@@ -34,6 +33,23 @@ async def message_handler(game: Game, message:str):
             else:
                 # todo responder por voz que não foi encontrado
                 print("No house found")
+        elif intent == "choose_color":
+            if message["entities"]:
+                if len(message["entities"]) > 0:
+                    color_name = message["entities"][0]["value"].lower()
+                    if color_name in colors:
+                        color_name = colors[color_name]
+                        print(f"Color name: {color_name}")
+                        game.choose_color(color_name)
+                    else:
+                        # todo responder por voz que não foi encontrado
+                        print("No color found")
+                else:
+                    # todo responder por voz que não foi encontrado
+                    print("No color found")
+            else:
+                # todo responder por voz que não foi encontrado
+                print("No color found")
         elif intent == "roll_dice":
             print("Roll dice")
             game.roll_dice()
@@ -68,18 +84,19 @@ async def main():
     ssl_context.verify_mode = ssl.CERT_NONE
 
     # Connect to websocket
-    try:
-        async with websockets.connect(mmi_cli_out_add, ssl=ssl_context) as websocket:
-            print("Connected to MMI CLI OUT")
-            
-            while True:
+    
+    async with websockets.connect(mmi_cli_out_add, ssl=ssl_context) as websocket:
+        print("Connected to MMI CLI OUT")
+                
+        while True:
+            try:
                 msg = await websocket.recv()
                 await message_handler(game=game, message=msg)
-
-    except Exception as e:
-        print(f"Error: {e}")
+            except Exception as e:
+                print(f"Error: {e}")
 
     game.close()
+    system.exit(0)
 
 if __name__ == "__main__":
     import asyncio

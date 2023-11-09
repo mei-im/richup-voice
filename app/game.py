@@ -1,6 +1,9 @@
 import time
 from selenium.webdriver import Firefox
-from mapping import Buttons, Inputs, Houses
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support import expected_conditions as EC
+from mapping import Buttons, Inputs, Houses, Colors
 
 
 class Game:
@@ -11,6 +14,7 @@ class Game:
         self.button = Buttons(self.browser)
         self.input = Inputs(self.browser)
         self.house = Houses(self.browser)
+        self.colors = Colors(self.browser)
         time.sleep(2)
         self.button.accept_cookies.click()
 
@@ -25,9 +29,18 @@ class Game:
         house = self.house.__getattribute__(house_name)
         house.click()
 
+    def choose_color(self, color):
+        color = self.colors.__getattribute__(color)
+        color.click()
+
     def roll_dice(self):
-        # verificar se o botão de rolar os dados está habilitado
-        self.button.roll_dice.click()
+        # Check if the roll the dice text is correct
+        text = self.button.roll_dice.text
+        if text == 'Roll the dice':
+            self.button.roll_dice.click()
+        else:
+            print('It\'s not your turn to roll the dice')
+            # raise GameException('It\'s not your turn to roll the dice')
 
     def end_turn(self):
         self.button.end_turn.click()
