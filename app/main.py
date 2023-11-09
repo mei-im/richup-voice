@@ -8,6 +8,7 @@ from game import Game
 from dictionarys import houses,colors
 
 HOST = "localhost"
+not_quit = True
 
 async def message_handler(game: Game, message:str):
     message = process_message(message)
@@ -69,13 +70,20 @@ async def message_handler(game: Game, message:str):
             game.buy()
         elif intent == "leave_prison":
             print("leave_prison")
+            # TODO IMPLEMENTAR
         elif intent == "give_up_game":
             print("give_up_game")
+            # TODO IMPLEMENTAR
+
         elif intent == "close_game":
             print("close_game")
             game.close()
-            system.exit(0)
-            
+            global not_quit
+            not_quit = False
+
+        elif intent == "help":
+            print("help")
+            # TODO IMPLEMENTAR
         else:
             print(f"Command not found: {message}")
     else:
@@ -108,16 +116,20 @@ async def main():
     async with websockets.connect(mmi_cli_out_add, ssl=ssl_context) as websocket:
         print("Connected to MMI CLI OUT")
                 
-        while True:
+        while not_quit:
             try:
                 msg = await websocket.recv()
                 await message_handler(game=game, message=msg)
             except Exception as e:
                 print(f"Error: {e}")
-                break
+                # terminar ligação por websocket
+        
+        print("Closing connection")
+        await websocket.close()
+        print("Connection closed")
+        exit(0)
+    
 
-    game.close()
-    system.exit(0)
 
 if __name__ == "__main__":
     import asyncio
