@@ -101,11 +101,14 @@ nlu:
 
 - intent: end_turn
   examples: |
-  - Acabei a minha jogada
-  - Acabei
-  - Terminei
-  - Próximo
-  - Próxima jogada
+    - Acabei a minha jogada
+    - Acabei a jogada
+    - Acabei
+    - Terminei
+    - Próximo
+    - Próxima jogada
+    - Terminar jogada
+    - Terminar turn 
 
 # - intent: buy_house
 #   examples: |
