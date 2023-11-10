@@ -14,49 +14,63 @@ not_quit = True
 
 async def message_handler(game: Game, message:str):
     message = process_message(message)
-    print(f"Message received: {message}")
-
+    # print(f"Message received: {message}")
     if message == "OK":
         return "OK"
     elif message["intent"]["name"]:
+        print(f"Message received/ intent: {message['intent']['name']}")
         intent = message["intent"]["name"]
         if intent == "insert_name":
             print("Insert name")
         elif intent == "create_game":
-            print("Create game")
+            game.create_game()
         elif intent == "choose_color":
+            print("choose_color")
             if message["entities"]:
                 if len(message["entities"]) > 0:
                     color_name = message["entities"][0]["value"].lower()
                     if color_name in colors:
                         color_name = colors[color_name]
+                        print(f"Color name: {color_name}")
                         game.choose_color(color_name)
                     else:
+                        print("Não foi encontrada a cor")
                         game.tts("Não foi encontrada a cor")
                 else:
+                    print("Não foi encontrada a cor 2")
                     game.tts("Não foi encontrada a cor")
             else:
+                print("Não foi encontrada a cor 3")
                 game.tts("Não foi encontrada a cor")
         elif intent == "information_house":
+            print("information_house")
             if message["entities"]:
                 if len(message["entities"]) > 0:
                     house_name = message["entities"][0]["value"].lower()
                     if house_name in houses:
                         house_name = houses[house_name]
+                        print(f"House name: {house_name}")
                         game.list_house_information(house_name)
                     else:
+                        print("Não foi encontrada a propriedade")
                         game.tts("Não foi encontrada a propriedade")
                 else:
+                    print("Não foi encontrada a propriedade")
                     game.tts("Não foi encontrada a propriedade")
             else:
+                print("Não foi encontrada a propriedade")
                 game.tts("Não foi encontrada a propriedade")
         elif intent == "start_game":
+            print("start_game")
             game.start_game()
         elif intent == "roll_dice":
+            print("roll_dice")
             game.roll_dice()
         elif intent == "end_turn":
+            print("end_turn")
             game.end_turn()
         elif intent == "buy_house":
+            print("buy_house")
             game.buy()
         elif intent == "leave_prison":
             print("leave_prison")
@@ -66,8 +80,8 @@ async def message_handler(game: Game, message:str):
             # TODO IMPLEMENTAR
         elif intent == "close_game":
             print("close_game")
+            game.tts("Obrigado por jogar Richup")
             game.close()
-            game.tss("Obrigado por jogar Richup")
             global not_quit
             not_quit = False
 
@@ -94,7 +108,6 @@ async def main():
     
     tts = TTS(FusionAdd=f"https://{HOST}:8000/IM/USER1/APPSPEECH").sendToVoice
     game = Game(TTS=tts)
-    tts("Bem vindo ao Richup, o jogo de tabuleiro online")
 
     mmi_cli_out_add = f"wss://{HOST}:8005/IM/USER1/APP"
 
@@ -114,7 +127,6 @@ async def main():
                 await message_handler(game=game, message=msg)
             except Exception as e:
                 print(f"Error: {e}")
-                # terminar ligação por websocket
         
         print("Closing connection")
         await websocket.close()

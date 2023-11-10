@@ -78,8 +78,6 @@ class Inputs(MapObject):
     def name(self):
         return self.find_element('/html/body/div/div[4]/div[1]/div[1]/div[2]/div[1]/div/div[1]/div[1]/div/input')
 
-
-
 class Houses(MapObject):
 
     @property

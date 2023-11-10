@@ -17,75 +17,104 @@ class Game:
         self.house = Houses(self.browser)
         self.colors = Colors(self.browser)
         self.tts = TTS
+        self.tts("Bem vindo ao Richup, o jogo de tabuleiro online")
         time.sleep(2)
         self.button.accept_cookies.click()
         time.sleep(1)
-        self.tts("Para começar, insere o teu nome e inicia a sessão")
+        self.tts("Para começar, insere o teu nome e cria uma sala para ti e para os teus amigos")
 
     # def join_game(self, name):
     #     self.input.name.send_keys(name)
     #     self.button.play.click()
 
     def create_game(self):
-        self.button.create_game.click()
-        self.tss("Escolha a cor com que quer jogar")
+        try:
+            if self.input.name.get_attribute("value") == "":
+                self.button.randomize_name.click()
+                self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
+            time.sleep(3)
+            self.button.create_private_game.click()
+            self.tts("Escolha a cor com que quer jogar")
+        except:
+            self.tts("Não é permitido, enquanto estás numa sala")
 
     def list_house_information(self,house_name):
         # TODO VOICE
+        print("Game : list_house_information")
         house = self.house.__getattribute__(house_name)
         house.click()
+        time.sleep(1)
+        self.tts(f"Já consegues ver a informação da propriedade {house_name}")
 
     def choose_color(self, color):
-        if self.button.join_game_after_color.text.lower() == 'join game':
-            color = self.colors.__getattribute__(color)
-            color.click()
-            name_color = colors_in_pt[color]
-            self.tss(f"Ficaste com a cor {name_color}")
-            time.sleep(2)
-            self.tss("Espera que entre na sala")
-            self.button.join_game_after_color.click()
-            self.tss("Bem vindo ao sua sala")
-        else:
-            self.tts("You can't choose a color now")
+        try: 
+            if self.button.join_game_after_color.text.lower() == 'join game':
+                print("join game")
+                name_color = colors_in_pt[color]
+                color = self.colors.__getattribute__(color)
+                color.click()
+                self.tts(f"Ficaste com a cor {name_color}")
+                time.sleep(2)
+                self.tts("Espera que entre na sala")
+                self.button.join_game_after_color.click()
+                self.tts("Bem vindo ao sua sala")
+            else:
+                self.tts("Não podes escolher a cor agora")
+        except:
+            self.tts("Não é permitido, mudares a cor neste momento")
 
     def roll_dice(self):
-        # TODO : Check if the element is present
-        if self.button.roll_dice.text.lower() == 'roll the dice' or \
-            self.button.roll_dice.text.lower() == 'roll again':
-            self.button.roll_dice.click()
-        else:
-            self.tts("Não podes lançar os dados agora")
+        try: 
+            if self.button.roll_dice.text.lower() == 'roll the dice' or \
+                self.button.roll_dice.text.lower() == 'roll again':
+                self.button.roll_dice.click()
+                self.tts("Lançaste os dados")
+            else:
+                self.tts("Não é a tua vez de lançar os dados")
+        except: 
+            self.tts("Não é permitido, conseguires lançar os dados neste momento")
 
     def end_turn(self):
-        # TODO: ckeck if the element is present
-        if self.button.end_turn.text == 'End turn':
-            self.button.end_turn.click()
-        else:
-            self.tts("Não podes acabar a ronda agora")
+        try: 
+            if self.button.end_turn.text == 'End turn':
+                self.button.end_turn.click()
+                self.tts("Acabaste a tua ronda")
+            else:
+                self.tts("Não é a tua vez de acabar a ronda")
+        except:
+            self.tts("Não é permitido, acabar a ronda neste momento")
 
     def buy(self):
-        # TODO: ckeck if the element is present
-        if "Buy" in self.button.buy.text:
-            self.button.buy.click()
-            self.tts("Adquiriste a propriedade")
-        else:
-            self.tts("Não podes comprar nenhuma propriedade por agora")
+        try:
+            if "Buy" in self.button.buy.text:
+                self.button.buy.click()
+                self.tts("Adquiriste a propriedade")
+            else:
+                self.tts("Não podes comprar nenhuma propriedade por agora")
+        except:
+            self.tts("Não é permitido, comprares alguma propriedade neste momento")
 
     def start_game(self):
-        if self.button.enable_bots:
-            self.button.enable_bots.click()
-        self.tts("Aguarde enquanto os jogadores entram na sala")
-        time.sleep(10)
-        if self.button.start_game.text.lower() == 'start game':
-            self.button.start_game.click()
-            self.tts("O jogo começou")
-        else:
-            print("Error")
+        try:
+            if self.button.enable_bots:
+                self.button.enable_bots.click()
+            time.sleep(3)
+            self.tts("Aguarde enquanto os jogadores entram na sala")
+            time.sleep(3)
+            if self.button.start_game.text.lower() == 'start game':
+                self.button.start_game.click()
+                self.tts("O jogo começou!")
+            else:
+                self.tts("O jogo está a decorrer")
+        except:
+            self.tts("Não é permitido, começar o jogo neste momento")
 
     def leave_prison(self):
+        print("Game : leave_prison")
         pass
 
     def give_up_game(self):
+        print("Game : give_up_game")
         pass
 
 
