@@ -1,0 +1,15 @@
+version: "3.1"
+nlu:  
+- lookup: name
+  examples: |
+    - dani
+    - Maria
+    - mariana
+    - Martini
+    - Maria12
+    - João
+    - Julia
+    - vasco
+    - gui123
+    - luis afonso
+    

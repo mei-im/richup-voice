@@ -23,10 +23,15 @@ class Game:
         time.sleep(1)
         self.tts("Para começar, insere o teu nome e cria uma sala para ti e para os teus amigos")
 
-    # def join_game(self, name):
-    #     self.input.name.send_keys(name)
-    #     self.button.play.click()
-
+    def join_game(self, name):
+        try:
+            self.input.name.send_keys(name)
+            self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
+            time.sleep(3)
+            self.tss("Agora, podes entrar numa sala privada ou pública")
+        except:
+            self.tts("Não é permitido, mudares o teu nome neste momento")
+            
     def create_game(self):
         try:
             self.input.name.send_keys("")
@@ -145,6 +150,7 @@ class Game:
             self.tts("Ainda bem que não desististe")
         except:
             self.tts("Não é permitido, cancelar a desistência do jogo neste momento")
+
 
     def close(self):
         self.browser.close()

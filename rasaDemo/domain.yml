@@ -4,7 +4,7 @@ intents:
 - goodbye
 - confirm
 - deny
-# - insert_name
+- insert_name
 - create_game
 - choose_color
 - information_house
@@ -20,6 +20,7 @@ entities:
 - house
 - color
 - price
+- name
 
 slots:
   switch:
@@ -46,6 +47,12 @@ slots:
     mappings:
     - type: from_entity
       entity: price
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: name
   
   
 responses:

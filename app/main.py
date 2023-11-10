@@ -13,6 +13,7 @@ HOST = "127.0.0.1"
 not_quit = True
 intent_before = None
 
+
 async def message_handler(game: Game, message:str):
     global intent_before
     message = process_message(message)
