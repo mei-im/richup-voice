@@ -23,7 +23,9 @@ async def message_handler(game: Game, message:str):
     elif message["intent"]["name"]:
         print(f"Message received/ intent: {message['intent']['name']}")
         intent = message["intent"]["name"]
-        if intent == "insert_name":
+        if message["intent"]["confidence"] < 0.5:
+            game.tts("Não percebi o que disseste")
+        elif intent == "insert_name":
             # TODO IMPLEMENTAR
             print("Insert name")
             intent_before = intent

@@ -4,7 +4,7 @@ intents:
 - goodbye
 - confirm
 - deny
-- insert_name
+# - insert_name
 - create_game
 - choose_color
 - information_house
@@ -15,6 +15,9 @@ intents:
 - leave_prison
 - give_up_game
 - close_game
+# - desligar o microfone
+# - desligar som do jogo
+
 
 entities:
 - house

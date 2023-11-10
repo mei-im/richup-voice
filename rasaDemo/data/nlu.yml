@@ -38,18 +38,18 @@ nlu:
     - Acho que não
     - Nem por isso
 
-- intent: insert_name 
-  examples: |
-    - O meu nome é [dani](name)
-    - O meu nome é [Maria](name)
-    - Insere o meu nome como [mariana](name)
-    - Chamo me [Martini](name)
-    - Vou usar o nome [Maria12](name)
-    - Vou jogar com o nome [João](name)
-    - Vou utilizar o nickname [Julia](name)
-    - Quero jogar como [vasco](name)
-    - Vou jogar como [gui123](name)
-    - Jogar como [luis afonso](name)
+# - intent: insert_name 
+#   examples: |
+#     - O meu nome é [dani](name)
+#     - O meu nome é [Maria](name)
+#     - Insere o meu nome como [mariana](name)
+#     - Chamo me [Martini](name)
+#     - Vou usar o nome [Maria12](name)
+#     - Vou jogar com o nome [João](name)
+#     - Vou utilizar o nickname [Julia](name)
+#     - Quero jogar como [vasco](name)
+#     - Vou jogar como [gui123](name)
+#     - Jogar como [luis afonso](name)
 
 - intent: create_game
   examples: |

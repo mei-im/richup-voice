@@ -18,9 +18,9 @@ class Game:
         self.colors = Colors(self.browser)
         self.tts = TTS
         self.tts("Bem vindo ao Monopoly online, um jogo de tabuleiro para toda a família e amigos")
-        time.sleep(2)
+        time.sleep(4)
         self.button.accept_cookies.click()
-        time.sleep(1)
+        time.sleep(2)
         self.tts("Para começar, insere o teu nome e cria uma sala para ti e para os teus amigos")
 
     def join_game(self, name):
@@ -28,22 +28,25 @@ class Game:
             self.input.name.send_keys(name)
             self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
             time.sleep(3)
-            self.tss("Agora, podes entrar numa sala privada ou pública")
+            self.tts("Agora, podes entrar numa sala privada ou pública")
         except:
             self.tts("Não é permitido, mudares o teu nome neste momento")
-            
+
     def create_game(self):
-        try:
-            self.input.name.send_keys("")
-            if self.input.name.get_attribute("value") == "":
-                self.tss("Como não inseriste nenhum nome, vou gerar um para ti")
-                self.button.randomize_name.click()
-                self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
-            time.sleep(3)
-            self.button.create_private_game.click()
-            self.tts("Escolha a cor com que quer jogar")
+        try: 
+            if self.button.create_private_game:
+                self.input.name.send_keys("")
+                if self.input.name.get_attribute("value") == "":
+                    self.tts("Como não inseriste nenhum nome, vou gerar um para ti")
+                    self.button.randomize_name.click()
+                    self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
+                time.sleep(3)
+                self.button.create_private_game.click()
+                self.tts("Escolha a cor com que quer jogar")
+            else:
+                self.tts("Não é permitido, criares uma sala neste momento")
         except:
-            self.tts("Não é permitido, enquanto estás numa sala")
+            self.tts("Não é permitido, criares uma sala neste momento")
 
     def list_house_information(self,house_name):
         print("Game : list_house_information")
@@ -61,10 +64,12 @@ class Game:
                 self.tts(f"Ficaste com a cor {name_color}")
                 time.sleep(2)
                 self.tts("Espera que entre na sala")
+                time.sleep(2)
                 self.button.join_game_after_color.click()
                 self.tts("Bem vindo ao sua sala")
             else:
                 self.tts("Não podes escolher a cor agora")
+                
         except:
             self.tts("Não é permitido, mudares a cor neste momento")
 
@@ -150,7 +155,6 @@ class Game:
             self.tts("Ainda bem que não desististe")
         except:
             self.tts("Não é permitido, cancelar a desistência do jogo neste momento")
-
 
     def close(self):
         self.browser.close()
