@@ -7,7 +7,7 @@ from mapping import Buttons, Inputs, Houses, Colors
 
 
 class Game:
-    def __init__(self) -> None:
+    def __init__(self, TTS) -> None:
         self.browser = Firefox()
         self.browser.get('https://richup.io/')
         self.browser.maximize_window()
@@ -15,6 +15,7 @@ class Game:
         self.input = Inputs(self.browser)
         self.house = Houses(self.browser)
         self.colors = Colors(self.browser)
+        self.tts = TTS
         time.sleep(2)
         self.button.accept_cookies.click()
         # TODO : DIZER QUE PODE INTERAGIR 
@@ -37,25 +38,24 @@ class Game:
             time.sleep(2)
             self.button.join_game_after_color.click()
         else:
-            print('You can\'t join the game')
-            # raise GameException('You can\'t join the game')
+            self.tts("You can't choose a color now")
 
     def roll_dice(self):
         # TODO : Check if the element is present
-        if self.button.roll_dice.text == 'Roll the dice':
+        if self.button.roll_dice.text.lower() == 'roll the dice' or \
+            self.button.roll_dice.text.lower() == 'roll again':
             self.button.roll_dice.click()
         else:
-            print('It\'s not your turn to roll the dice')
-            # raise GameException('It\'s not your turn to roll the dice')
+            print('You can\'t roll the dice now')
+            self.tts("Não podes lançar os dados agora")
 
     def end_turn(self):
         # TODO: ckeck if the element is present
-        if self.button.end_turn:
-            if self.button.end_turn.text == 'End turn':
-                self.button.end_turn.click()
-            else:
-                print('It\'s not time to end the turn')
-                # raise GameException('It\'s not time to end the turn')
+        if self.button.end_turn.text == 'End turn':
+            self.button.end_turn.click()
+        else:
+            print('It\'s not time to end the turn')
+            # raise GameException('It\'s not time to end the turn')
 
     def buy(self):
         # TODO: ckeck if the element is present

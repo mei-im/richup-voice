@@ -4,10 +4,12 @@ import xml.etree.ElementTree as ET
 import ssl
 import websockets
 
+
 from game import Game
 from dictionarys import houses,colors
+from tts import TTS
 
-HOST = "localhost"
+HOST = "127.0.0.1"
 not_quit = True
 
 async def message_handler(game: Game, message:str):
@@ -102,7 +104,9 @@ def process_message(message):
     
 async def main():
     
-    game = Game()
+    tts = TTS(FusionAdd=f"https://{HOST}:8000/IM/USER1/APPSPEECH").sendToVoice
+    game = Game(TTS=tts)
+    tts("Frase de teste")
 
     mmi_cli_out_add = f"wss://{HOST}:8005/IM/USER1/APP"
 
