@@ -30,45 +30,33 @@ async def message_handler(game: Game, message:str):
                     color_name = message["entities"][0]["value"].lower()
                     if color_name in colors:
                         color_name = colors[color_name]
-                        print(f"Color name: {color_name}")
                         game.choose_color(color_name)
                     else:
-                        # todo responder por voz que não foi encontrado
-                        print("No color found")
+                        game.tts("Não foi encontrada a cor")
                 else:
-                    # todo responder por voz que não foi encontrado
-                    print("No color found")
+                    game.tts("Não foi encontrada a cor")
             else:
-                # todo responder por voz que não foi encontrado
-                print("No color found")
+                game.tts("Não foi encontrada a cor")
         elif intent == "information_house":
             if message["entities"]:
                 if len(message["entities"]) > 0:
                     house_name = message["entities"][0]["value"].lower()
                     if house_name in houses:
                         house_name = houses[house_name]
-                        print(f"House name: {house_name}")
                         game.list_house_information(house_name)
                     else:
-                        # todo responder por voz que não foi encontrado
-                        print("No house found")
+                        game.tts("Não foi encontrada a propriedade")
                 else:
-                    # todo responder por voz que não foi encontrado
-                    print("No house found")
+                    game.tts("Não foi encontrada a propriedade")
             else:
-                # todo responder por voz que não foi encontrado
-                print("No house found")
+                game.tts("Não foi encontrada a propriedade")
         elif intent == "start_game":
-            print("start_game")
             game.start_game()
         elif intent == "roll_dice":
-            print("Roll dice")
             game.roll_dice()
         elif intent == "end_turn":
-            print("End turn")
             game.end_turn()
         elif intent == "buy_house":
-            print("buy_house")
             game.buy()
         elif intent == "leave_prison":
             print("leave_prison")
@@ -76,10 +64,10 @@ async def message_handler(game: Game, message:str):
         elif intent == "give_up_game":
             print("give_up_game")
             # TODO IMPLEMENTAR
-
         elif intent == "close_game":
             print("close_game")
             game.close()
+            game.tss("Obrigado por jogar Richup")
             global not_quit
             not_quit = False
 
@@ -106,7 +94,7 @@ async def main():
     
     tts = TTS(FusionAdd=f"https://{HOST}:8000/IM/USER1/APPSPEECH").sendToVoice
     game = Game(TTS=tts)
-    tts("Frase de teste")
+    tts("Bem vindo ao Richup, o jogo de tabuleiro online")
 
     mmi_cli_out_add = f"wss://{HOST}:8005/IM/USER1/APP"
 

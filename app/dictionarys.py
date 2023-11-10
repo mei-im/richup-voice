@@ -84,4 +84,5 @@ colors = {
     "lima": "lime",
     "magenta": "hotpink",
     "castanha": "brown",
+    "verde lima": "lime",
 }

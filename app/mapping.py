@@ -44,7 +44,11 @@ class Buttons(MapObject):
     
     @property
     def accept_cookies(self):
-        return self.find_element('/html/body/div[1]/div/div/div/div[2]/div/button[2]')
+        try:
+            return self.find_element('/html/body/div[1]/div/div/div/div[2]/div/button[2]')
+        except Exception:
+            return self.find_element('/html/body/div[1]/div[1]/div[2]/span[1]/a')
+        
     @property
     def buy(self):
         return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div/div[1]/div/div[2]/div[2]/div[1]/div/button')
@@ -52,6 +56,22 @@ class Buttons(MapObject):
     @property
     def create_private_game(self):
         return self.find_element('/html/body/div[2]/div[4]/div[1]/div[1]/div[2]/div[1]/div/div[2]/div[1]/button[2]')
+    
+    @property
+    def randomize_name(self):
+        return self.find_element('/html/body/div/div[4]/div[1]/div[1]/div[2]/div[1]/div/div[1]/div[1]/div/div')
+    
+    @property
+    def bankrupt(self):
+        return self.find_element('/html/body/div[1]/div[4]/div/div[3]/div/div[2]/div/button')
+
+    @property
+    def confirm_bankrupt(self):
+        return self.find_element('/html/body/div[5]/div/div/div/button[1]')
+    
+    @property
+    def cancel_bankrupt(self):
+        return self.find_element('/html/body/div[5]/div/div/div/button[2]')
 
 class Inputs(MapObject):
     @property

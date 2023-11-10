@@ -1,0 +1,14 @@
+- inserir nome
+- iniciar sessao
+- cor azul + join 
+- start game
+- help
+- lançar dados (roll dice)
+- comprar propriedade (buy property)
+- end turn 
+- ver propriedades (see properties)
+- desistir
+- terminar jogo (end game)
+(change color)
+
+
