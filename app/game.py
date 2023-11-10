@@ -17,7 +17,7 @@ class Game:
         self.house = Houses(self.browser)
         self.colors = Colors(self.browser)
         self.tts = TTS
-        self.tts("Bem vindo ao Richup, o jogo de tabuleiro online")
+        self.tts("Bem vindo ao Monopoly online, um jogo de tabuleiro para toda a família e amigos")
         time.sleep(2)
         self.button.accept_cookies.click()
         time.sleep(1)
@@ -29,6 +29,7 @@ class Game:
 
     def create_game(self):
         try:
+            self.input.name.send_keys("")
             if self.input.name.get_attribute("value") == "":
                 self.button.randomize_name.click()
                 self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
@@ -39,11 +40,9 @@ class Game:
             self.tts("Não é permitido, enquanto estás numa sala")
 
     def list_house_information(self,house_name):
-        # TODO VOICE
         print("Game : list_house_information")
         house = self.house.__getattribute__(house_name)
         house.click()
-        time.sleep(1)
         self.tts(f"Já consegues ver a informação da propriedade {house_name}")
 
     def choose_color(self, color):
@@ -111,7 +110,15 @@ class Game:
 
     def leave_prison(self):
         print("Game : leave_prison")
-        pass
+        try:
+            print(self.button.prison_pay.text.lower())
+            if 'get free' in self.button.prison_pay.text.lower():
+                self.button.prison_pay.click()
+                self.tts("Pagaste para sair da prisão")
+            else:
+                self.tts("Não estás na prisão")
+        except:
+            self.tts("Não é permitido, sair da prisão neste momento")
 
     def give_up_game(self):
         print("Game : give_up_game")

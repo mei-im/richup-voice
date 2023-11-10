@@ -12,7 +12,7 @@ intents:
 - roll_dice
 - end_turn
 - buy_house
-# - leave_prison
+- leave_prison
 # - give_up_game
 - close_game
 

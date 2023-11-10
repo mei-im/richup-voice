@@ -74,7 +74,7 @@ async def message_handler(game: Game, message:str):
             game.buy()
         elif intent == "leave_prison":
             print("leave_prison")
-            # TODO IMPLEMENTAR
+            game.leave_prison()
         elif intent == "give_up_game":
             print("give_up_game")
             # TODO IMPLEMENTAR

@@ -167,9 +167,12 @@ nlu:
     - Pago o [140](price) pela casa
     - Pago o [600](price) pela propriedade
 
-# - intent: leave_prison
-#   examples: |
-#   ....
+- intent: leave_prison
+  examples: |
+    - Pagar [50](price) para sair da prisão
+    - Pago para sair da prisão
+    - Quero pagar para sair da prisão
+    - Quero sair da prisão
 
 # - intent: give_up_game
 #   examples: |
