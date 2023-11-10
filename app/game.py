@@ -31,6 +31,7 @@ class Game:
         try:
             self.input.name.send_keys("")
             if self.input.name.get_attribute("value") == "":
+                self.tss("Como não inseriste nenhum nome, vou gerar um para ti")
                 self.button.randomize_name.click()
                 self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
             time.sleep(3)
@@ -122,8 +123,28 @@ class Game:
 
     def give_up_game(self):
         print("Game : give_up_game")
-        pass
+        try: 
+            self.button.bankrupt.click()
+            time.sleep(1)
+            self.tts("Tem a certeza que quer desistir do jogo?")
+        except:
+            self.tts("Não é permitido, desistir do jogo neste momento")
 
+    def confirm_give_up_game(self):
+        print("Game : confirm_give_up_game")
+        try:
+            self.button.confirm_bankrupt.click()
+            self.tts("Desististe do jogo")
+        except:
+            self.tts("Não é permitido, desistir do jogo neste momento")
+
+    def cancel_give_up_game(self):
+        print("Game : cancel_give_up_game")
+        try:
+            self.button.cancel_bankrupt.click()
+            self.tts("Ainda bem que não desististe")
+        except:
+            self.tts("Não é permitido, cancelar a desistência do jogo neste momento")
 
     def close(self):
         self.browser.close()

@@ -2,7 +2,7 @@ version: '3.1'
 intents:
 - greet
 - goodbye
-- affirm
+- confirm
 - deny
 # - insert_name
 - create_game
@@ -13,7 +13,7 @@ intents:
 - end_turn
 - buy_house
 - leave_prison
-# - give_up_game
+- give_up_game
 - close_game
 
 entities:

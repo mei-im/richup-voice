@@ -63,15 +63,15 @@ class Buttons(MapObject):
     
     @property
     def bankrupt(self):
-        return self.find_element('/html/body/div[1]/div[4]/div/div[3]/div/div[2]/div/button')
+        return self.find_element('/html/body/div[2]/div[4]/div/div[3]/div/div[2]/div/button')
 
     @property
     def confirm_bankrupt(self):
-        return self.find_element('/html/body/div[5]/div/div/div/button[1]')
+        return self.find_element('/html/body/div[6]/div/div/div/button[1]')
     
     @property
     def cancel_bankrupt(self):
-        return self.find_element('/html/body/div[5]/div/div/div/button[2]')
+        return self.find_element('/html/body/div[6]/div/div/div/button[2]')
     
     @property
     def prison_pay(self):

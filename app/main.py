@@ -11,8 +11,10 @@ from tts import TTS
 
 HOST = "127.0.0.1"
 not_quit = True
+intent_before = None
 
 async def message_handler(game: Game, message:str):
+    global intent_before
     message = process_message(message)
     # print(f"Message received: {message}")
     if message == "OK":
@@ -21,11 +23,14 @@ async def message_handler(game: Game, message:str):
         print(f"Message received/ intent: {message['intent']['name']}")
         intent = message["intent"]["name"]
         if intent == "insert_name":
+            # TODO IMPLEMENTAR
             print("Insert name")
+            intent_before = intent
         elif intent == "create_game":
             game.create_game()
+            intent_before = intent
         elif intent == "choose_color":
-            print("choose_color")
+            intent_before = intent
             if message["entities"]:
                 if len(message["entities"]) > 0:
                     color_name = message["entities"][0]["value"].lower()
@@ -40,10 +45,9 @@ async def message_handler(game: Game, message:str):
                     print("Não foi encontrada a cor 2")
                     game.tts("Não foi encontrada a cor")
             else:
-                print("Não foi encontrada a cor 3")
                 game.tts("Não foi encontrada a cor")
         elif intent == "information_house":
-            print("information_house")
+            intent_before = intent
             if message["entities"]:
                 if len(message["entities"]) > 0:
                     house_name = message["entities"][0]["value"].lower()
@@ -52,34 +56,40 @@ async def message_handler(game: Game, message:str):
                         print(f"House name: {house_name}")
                         game.list_house_information(house_name)
                     else:
-                        print("Não foi encontrada a propriedade")
                         game.tts("Não foi encontrada a propriedade")
                 else:
-                    print("Não foi encontrada a propriedade")
                     game.tts("Não foi encontrada a propriedade")
             else:
-                print("Não foi encontrada a propriedade")
                 game.tts("Não foi encontrada a propriedade")
         elif intent == "start_game":
-            print("start_game")
             game.start_game()
+            intent_before = intent
         elif intent == "roll_dice":
-            print("roll_dice")
             game.roll_dice()
+            intent_before = intent
         elif intent == "end_turn":
-            print("end_turn")
             game.end_turn()
+            intent_before = intent
         elif intent == "buy_house":
-            print("buy_house")
             game.buy()
+            intent_before = intent
         elif intent == "leave_prison":
-            print("leave_prison")
             game.leave_prison()
+            intent_before = intent
         elif intent == "give_up_game":
             print("give_up_game")
-            # TODO IMPLEMENTAR
+            game.give_up_game()
+            intent_before = intent
+        elif intent_before == "give_up_game" and intent == "confirm":
+            game.confirm_give_up_game()
+            game.tts("Desististe do jogo. Obrigado por jogar Richup.")
+            game.tts("Podes fechar o jogo, ou continuar a ver o jogo a decorrer.")
+            intent_before = intent
+        elif intent_before == "give_up_game" and intent == "deny":
+            game.cancel_give_up_game()
+            game.tts("Ainda bem que não desististe. Continua a jogar.")
+            intent_before = intent
         elif intent == "close_game":
-            print("close_game")
             game.tts("Obrigado por jogar Richup")
             game.close()
             global not_quit

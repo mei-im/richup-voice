@@ -20,7 +20,7 @@ nlu:
     - Boa noite, Assistente
     - Até amanhã, Assistente
 
-- intent: affirm
+- intent: confirm
   examples: |
     - Sim
     - Claro
@@ -36,7 +36,6 @@ nlu:
     - Nope
     - Nunca
     - Acho que não
-    - Não gosto assim
     - Nem por isso
 
 # - intent: insert_name 
@@ -174,9 +173,22 @@ nlu:
     - Quero pagar para sair da prisão
     - Quero sair da prisão
 
-# - intent: give_up_game
-#   examples: |
-#   ....
+- intent: give_up_game
+  examples: |
+    - Desistir
+    - Desisto
+    - Quero desistir
+    - Quero desistir do jogo
+    - Quero desistir do jogo, por favor
+    - Banca rota
+    - Estou falido
+    - Estou falido, desisto
+    - Estou falido, quero desistir
+    - Quero declarar falência
+    - Falência
+    - Não quero jogar mais
+    - Quero parar de jogar
+
 
 - intent: close_game
   examples: |
