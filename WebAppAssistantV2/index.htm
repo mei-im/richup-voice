@@ -287,7 +287,7 @@ async function InitializeKWS(){
 
         resetfunc = setTimeout(function(){
           transcriptDiv.innerHTML = firstSent;
-          recognition.start();
+          // recognition.start();
         }, 1000);
 
         speechActive = false;
@@ -311,6 +311,15 @@ async function InitializeKWS(){
     recognition.start();
     console.log("start");
   })
+
+
+  $(document).keypress(function(e) {
+    console.log(e.which);
+    if(e.which == 109) {
+      recognition.start();
+      console.log("start");
+    }
+  });
   
 
   var vadActive = false;

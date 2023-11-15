@@ -18,7 +18,7 @@ class Game:
         self.colors = Colors(self.browser)
         self.tts = TTS
         self.tts("Bem vindo ao Monopoly online, um jogo de tabuleiro para toda a família e amigos")
-        time.sleep(4)
+        time.sleep(5)
         self.button.accept_cookies.click()
         time.sleep(2)
         self.tts("Para começar, insere o teu nome e cria uma sala para ti e para os teus amigos")

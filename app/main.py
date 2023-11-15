@@ -12,6 +12,7 @@ from tts import TTS
 HOST = "127.0.0.1"
 not_quit = True
 intent_before = None
+list_intent = ["insert_name", "create_game", "choose_color", "information_house", "start_game", "roll_dice", "end_turn", "buy_house", "leave_prison", "give_up_game", "close_game", "help"]
 
 
 async def message_handler(game: Game, message:str):
@@ -20,10 +21,10 @@ async def message_handler(game: Game, message:str):
     # print(f"Message received: {message}")
     if message == "OK":
         return "OK"
-    elif message["intent"]["name"]:
+    elif message["intent"]["name"] in list_intent:
         print(f"Message received/ intent: {message['intent']['name']}")
         intent = message["intent"]["name"]
-        if message["intent"]["confidence"] < 0.5:
+        if message["intent"]["confidence"] < 0.8:
             game.tts("Não percebi o que disseste")
         elif intent == "insert_name":
             # TODO IMPLEMENTAR
@@ -80,7 +81,6 @@ async def message_handler(game: Game, message:str):
             game.leave_prison()
             intent_before = intent
         elif intent == "give_up_game":
-            print("give_up_game")
             game.give_up_game()
             intent_before = intent
         elif intent_before == "give_up_game" and intent == "confirm":
@@ -101,9 +101,11 @@ async def message_handler(game: Game, message:str):
         elif intent == "help":
             print("help")
             # TODO IMPLEMENTAR
-        else:
+        else:      
+            game.tts("Não percebi o que disseste")
             print(f"Command not found: {message}")
     else:
+        game.tts("Não percebi o que disseste")
         print(f"Command not found: {message}")
 
 
