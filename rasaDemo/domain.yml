@@ -1,12 +1,11 @@
 version: '3.1'
 intents:
 - greet
-- goodbye
 - confirm
 - deny
-# - insert_name
+- insert_name
 - create_game
-- choose_color
+- choose_color 
 - information_house
 - start_game
 - roll_dice
@@ -15,8 +14,11 @@ intents:
 - leave_prison
 - give_up_game
 - close_game
-# - desligar o microfone
-# - desligar som do jogo
+# - desligar som 
+# - ativar som do jogo
+# - game_info
+# - list_of_colors
+# - help_in_game
 
 
 entities:

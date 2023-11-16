@@ -6,11 +6,28 @@ def randomize(func):
         return random.choice(func(*args, **kwargs))
     return wrapper
 
+@randomize
+def random_not_auth_insert_name():
+    return ["Não é permitido, mudares o teu nome neste momento",
+            "Já tens um nome no jogo",
+            "Já tens um nome no jogo, não podes mudar",
+            "Não é permitido, mudares de nome enquanto estás numa sala de jogo",
+            "Já tens um nome no jogo, não podes mudar enquanto estás numa sala de jogo",
+    ]
 
 @randomize
-def random_create_room_not_perm():
+def random_not_create_room():
     return ["Não é permitido, criares uma sala neste momento",
             "Já tens uma sala criada",
+            "Já te encontras numa sala", 
+    ]
+
+@randomize
+def random_create_room():
+    return ["Precisa de criar uma sala para poder jogar",
+            "Não tens nenhuma sala criada",
+            "Não te encontras numa sala", 
+            "Não te encontras numa sala, cria uma sala para poderes jogar",
     ]
 
 @randomize

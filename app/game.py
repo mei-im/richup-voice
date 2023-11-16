@@ -26,6 +26,20 @@ class Game:
 
     def get_url(self):
         return self.browser.current_url
+    
+    def insert_name(self, name):
+        # TODO VER SE É NECESSÁRIO
+        # if  "https://richup.io/room/" in self.get_url():
+        #     self.tts(random_not_auth_insert_name())
+        #     return
+        
+        try:
+            self.input.name.send_keys(name)
+            self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
+            time.sleep(3)
+            self.tts("Já podes criar uma sala privada para ti e para os teus amigos")
+        except:
+            self.tts(random_not_auth_insert_name())
 
     def join_game(self, name):
         try:
@@ -38,15 +52,16 @@ class Game:
             self.tts("Não é permitido, mudares o teu nome neste momento")
 
     def create_game(self):
-        if  "https://richup.io/room/" in self.get_url():
-            self.tts("Não é possível, criares uma sala, enquanto estás numa sala")
-            return
+        # TODO VER SE É NECESSÁRIO
+        # if  "https://richup.io/room/" in self.get_url():
+        #     self.tts(random_not_create_room())
+        #     return
         
         try: 
             if self.button.create_private_game:
                 self.input.name.send_keys("")
                 if self.input.name.get_attribute("value") == "":
-                    self.tts("Como não inseriste nenhum nome, vou gerar um para ti")
+                    self.tts("Como não inseriste nenhum nome, vou criar um nome aleatório para ti")
                     self.button.randomize_name.click()
                     self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
                 time.sleep(3)
@@ -55,12 +70,16 @@ class Game:
                 time.sleep(3)
                 self.tts("Escolha a cor com que quer jogar")
             else:
-                self.tts("Não é permitido, criares uma sala neste momento")
+                self.tts(random_not_create_room())
         except:
-            self.tts("Não é permitido, criares uma sala neste momento")
+            self.tts(random_not_create_room())
 
     def list_house_information(self,house_name):
-        print("Game : list_house_information")
+
+        if self.get_url() == "https://richup.io/":
+            self.tts("Precisas de entrar numa sala para acessar ao tabuleiro do jogo")
+            return
+        
         house = self.house.__getattribute__(house_name)
         house.click()
         self.tts(f"Já consegues ver a informação da propriedade {house_name}")
@@ -92,7 +111,7 @@ class Game:
     # DONE
     def roll_dice(self):
         if self.get_url() == "https://richup.io/":
-            self.tts("Precisas de entrar numa sala para poderes jogar")
+            self.tts(random_create_room())
             return
         # TODO PROBLEM JOIN GAME AND GAME NOT STARTED
         try: 
@@ -107,8 +126,8 @@ class Game:
     
     # DONE
     def end_turn(self):
-        if  self.get_url() == "https://richup.io/":
-            self.tts("Precisas de entrar numa sala para poderes jogar")
+        if self.get_url() == "https://richup.io/":
+            self.tts(random_create_room())
             return
         
         # TODO PROBLEM JOIN GAME AND GAME NOT STARTED
@@ -123,8 +142,8 @@ class Game:
 
     def buy(self):
 
-        if  self.get_url() == "https://richup.io/":
-            self.tts("Precisas de entrar numa sala para poderes jogar")
+        if self.get_url() == "https://richup.io/":
+            self.tts(random_create_room())
             return
         # TODO PROBLEM JOIN GAME AND GAME NOT STARTED
 
@@ -138,6 +157,11 @@ class Game:
             self.tts("Não é permitido, comprares alguma propriedade neste momento")
 
     def start_game(self):
+
+        if self.get_url() == "https://richup.io/":
+            self.tts(random_create_room())
+            return
+        
         try:
             if self.button.enable_bots:
                 self.button.enable_bots.click()
@@ -153,9 +177,11 @@ class Game:
             self.tts("Não é permitido, começar o jogo neste momento")
 
     def leave_prison(self):
-        if  self.get_url() == "https://richup.io/":
-            self.tts("Precisas de entrar numa sala para poderes jogar")
+
+        if self.get_url() == "https://richup.io/":
+            self.tts(random_create_room())
             return
+        
         try:
             print(self.button.prison_pay.text.lower())
             if 'get free' in self.button.prison_pay.text.lower():
@@ -167,9 +193,11 @@ class Game:
             self.tts("Não é permitido, sair da prisão neste momento")
 
     def give_up_game(self):
-        if  self.get_url() == "https://richup.io/":
-            self.tts("Precisas de entrar numa sala para poderes jogar")
+
+        if self.get_url() == "https://richup.io/":
+            self.tts(random_create_room())
             return
+        
         try: 
             self.button.bankrupt.click()
             time.sleep(1)
