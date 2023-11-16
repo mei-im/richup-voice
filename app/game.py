@@ -3,7 +3,7 @@ from selenium.webdriver import Firefox
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
-from utils import random_frase_dados
+from utils import *
 from mapping import Buttons, Inputs, Houses, Colors
 from new_dictonarys import colors_in_pt
 
@@ -83,6 +83,7 @@ class Game:
         except:
             self.tts("Não é permitido escolheres a cor, enquanto não estás numa sala ou num jogo a decorrer")
 
+    # DONE
     def roll_dice(self):
         try: 
             if self.button.roll_dice.text.lower() == 'roll the dice' or \
@@ -92,7 +93,7 @@ class Game:
             else:
                 self.tts(random_frase_dados())
         except: 
-            self.tts("Não é a tua vez de Jogar")
+            self.tts(random_frase_dados2())
 
     def end_turn(self):
         try: 
