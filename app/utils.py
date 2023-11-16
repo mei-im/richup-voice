@@ -7,6 +7,34 @@ def randomize(func):
     return wrapper
 
 @randomize
+def random_not_understand():
+    return ["Não percebi o que disseste",
+            "Não entendi o que disseste",
+            "Não percebi o que disseste, por favor repita",
+            "Podes repetir o que disseste",
+            "Não percebi, podes repetir",
+            "Não percebi, podes repetir por favor", 
+            "Desculpa, não percebi o que disseste",
+            "Desculpa, não percebi, podes repetir",
+            "Repita por favor, não percebi o que disseste",
+            "Repita por favor, não percebi",
+    ]
+
+@randomize
+def random_not_understand_name():
+    return ["Não percebi o nome que disseste, por favor repita",
+            "Podes repetir o nome, não percebi",
+            "Por favor, repita o nome",
+            "Por favor, repita o nome com que quer ser identificado",
+            "Não percebi o nome, podes repetir",
+            "Não entendi o nome com que quer ser identificado, podes repetir",
+            "Por favor, diga o nome com que quer ser identificado",
+            "Desculpa, não percebi com que nome quer jogar",
+            "Desculpa, não percebi, podes repetir",
+            "Repita por favor, não percebi o nome com que quer ser identificado",
+    ]
+
+@randomize
 def random_not_auth_insert_name():
     return ["Não é permitido, mudares o teu nome neste momento",
             "Já tens um nome no jogo",
@@ -14,6 +42,7 @@ def random_not_auth_insert_name():
             "Não é permitido, mudares de nome enquanto estás numa sala de jogo",
             "Já tens um nome no jogo, não podes mudar enquanto estás numa sala de jogo",
     ]
+
 
 @randomize
 def random_not_create_room():
@@ -50,17 +79,4 @@ def random_frase_dados2():
                 "Estás a tentar jogar fora da tua vez",
                 "Não podes jogar fora da tua vez",
                 "Não podes jogar enquanto outro jogador não acabar a sua jogada",
-    ]
-
-@randomize
-def random_frase_nao_entendi():
-    return ["Não percebi o que disseste",
-            "Não entendi o que disseste",
-            "Não percebi o que disseste, por favor repita",
-            "Podes repetir o que disseste",
-            "Não percebi, podes repetir",
-            "Não percebi, podes repetir por favor", 
-            "Desculpa, não percebi o que disseste",
-            "Desculpa, não percebi, podes repetir",
-            "Repita por favor, não percebi o que disseste",
     ]

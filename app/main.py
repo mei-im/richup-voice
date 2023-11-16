@@ -26,9 +26,16 @@ async def message_handler(game: Game, message:str):
         print(f"Message received/ intent: {message['intent']['name']}")
         intent = message["intent"]["name"]
         if message["intent"]["confidence"] < 0.8:
-            game.tts(random_frase_nao_entendi())
-        elif intent == "insert_name":# TODO IMPLEMENTAR   
-            print("Insert name")
+            game.tts(random_not_understand())
+        elif intent == "insert_name":#DONE  
+            if message["entities"]:
+                if len(message["entities"]) > 0:
+                    name = message["entities"][0]["value"].lower()
+                    game.insert_name(name)
+                else:
+                    game.tts(random_not_understand_name())
+            else:
+                game.tts(random_not_understand_name())
             intent_before = intent
         elif intent == "create_game": # TODO VERIFICAR SE ESTÁ A FUNCIONAR
             game.create_game()
@@ -100,10 +107,10 @@ async def message_handler(game: Game, message:str):
             print("help")
             # TODO IMPLEMENTAR
         else:      
-            game.tts(random_frase_nao_entendi())
+            game.tts(random_not_understand())
             print(f"Command not found: {message}")
     else:
-        game.tts(random_frase_nao_entendi())
+        game.tts(random_not_understand())
         print(f"Command not found: {message}")
 
 
@@ -139,6 +146,7 @@ async def main():
                 msg = await websocket.recv()
                 await message_handler(game=game, message=msg)
             except Exception as e:
+                tts("Ocorreu um erro, a fechar o jogo")
                 print(f"Error: {e}")
         
         print("Closing connection")

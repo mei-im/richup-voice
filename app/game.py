@@ -27,13 +27,9 @@ class Game:
     def get_url(self):
         return self.browser.current_url
     
-    def insert_name(self, name):
-        # TODO VER SE É NECESSÁRIO
-        # if  "https://richup.io/room/" in self.get_url():
-        #     self.tts(random_not_auth_insert_name())
-        #     return
-        
+    def insert_name(self, name): # DONE
         try:
+            self.input.name.send_keys("")
             self.input.name.send_keys(name)
             self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
             time.sleep(3)
