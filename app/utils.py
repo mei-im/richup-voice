@@ -1,9 +1,21 @@
 import random
 
+# create a decorator that randomize the tts of the function
+def randomize(func):
+    def wrapper(*args, **kwargs):
+        return random.choice(func(*args, **kwargs))
+    return wrapper
 
+
+@randomize
+def random_create_room_not_perm():
+    return ["Não é permitido, criares uma sala neste momento",
+            "Já tens uma sala criada",
+    ]
+
+@randomize
 def random_frase_dados():
-    frases = ["Lançaste os dados", 
-              "Já lançaste os dados", 
+    return [  "Já lançaste os dados", 
               "Já lançaste os dados, não sejas batoteiro",
               "Não sejas batoteiro, já lançaste os dados",
               "Nínguem gosta de um batoteiro",
@@ -11,10 +23,10 @@ def random_frase_dados():
               "Termina a tua ronda, e para de Trapacear",
               
     ]
-    return random.choice(frases)
 
+@randomize
 def random_frase_dados2():
-    frases = [ "Não é a tua vez de Jogar", 
+    return [ "Não é a tua vez de Jogar", 
               "Espera pela tua jogada", 
                 "Não é a tua vez de jogar, espera pela tua vez", 
                 "Espera pela tua vez de jogar",
@@ -23,10 +35,9 @@ def random_frase_dados2():
                 "Não podes jogar enquanto outro jogador não acabar a sua jogada",
     ]
 
-    return random.choice(frases)
-
+@randomize
 def random_frase_nao_entendi():
-    frase= ["Não percebi o que disseste",
+    return ["Não percebi o que disseste",
             "Não entendi o que disseste",
             "Não percebi o que disseste, por favor repita",
             "Podes repetir o que disseste",
@@ -36,5 +47,3 @@ def random_frase_nao_entendi():
             "Desculpa, não percebi, podes repetir",
             "Repita por favor, não percebi o que disseste",
     ]
-
-    return random.choice(frase)

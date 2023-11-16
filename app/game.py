@@ -24,6 +24,8 @@ class Game:
         time.sleep(2)
         self.tts("Para começar, podes inserir o teu nome. E criar uma sala para ti e para os teus amigos")
 
+    def get_url(self):
+        return self.browser.current_url
 
     def join_game(self, name):
         try:
@@ -36,6 +38,10 @@ class Game:
             self.tts("Não é permitido, mudares o teu nome neste momento")
 
     def create_game(self):
+        if  "https://richup.io/room/" in self.get_url():
+            self.tts("Não é possível, criares uma sala, enquanto estás numa sala")
+            return
+        
         try: 
             if self.button.create_private_game:
                 self.input.name.send_keys("")
@@ -85,6 +91,10 @@ class Game:
 
     # DONE
     def roll_dice(self):
+        if self.get_url() == "https://richup.io/":
+            self.tts("Precisas de entrar numa sala para poderes jogar")
+            return
+        # TODO PROBLEM JOIN GAME AND GAME NOT STARTED
         try: 
             if self.button.roll_dice.text.lower() == 'roll the dice' or \
                 self.button.roll_dice.text.lower() == 'roll again':
@@ -94,18 +104,30 @@ class Game:
                 self.tts(random_frase_dados())
         except: 
             self.tts(random_frase_dados2())
-
+    
+    # DONE
     def end_turn(self):
+        if  self.get_url() == "https://richup.io/":
+            self.tts("Precisas de entrar numa sala para poderes jogar")
+            return
+        
+        # TODO PROBLEM JOIN GAME AND GAME NOT STARTED
         try: 
             if self.button.end_turn.text == 'End turn':
                 self.button.end_turn.click()
-                self.tts("Acabaste a tua ronda")
+                self.tts("A tua ronda terminou")
             else:
                 self.tts("Não é a tua vez de acabar a ronda")
         except:
-            self.tts("Não é permitido, acabar a ronda neste momento")
+            self.tts("Outro jogador ainda não acabou a sua ronda")
 
     def buy(self):
+
+        if  self.get_url() == "https://richup.io/":
+            self.tts("Precisas de entrar numa sala para poderes jogar")
+            return
+        # TODO PROBLEM JOIN GAME AND GAME NOT STARTED
+
         try:
             if "Buy" in self.button.buy.text:
                 self.button.buy.click()
@@ -131,7 +153,9 @@ class Game:
             self.tts("Não é permitido, começar o jogo neste momento")
 
     def leave_prison(self):
-        print("Game : leave_prison")
+        if  self.get_url() == "https://richup.io/":
+            self.tts("Precisas de entrar numa sala para poderes jogar")
+            return
         try:
             print(self.button.prison_pay.text.lower())
             if 'get free' in self.button.prison_pay.text.lower():
@@ -143,7 +167,9 @@ class Game:
             self.tts("Não é permitido, sair da prisão neste momento")
 
     def give_up_game(self):
-        print("Game : give_up_game")
+        if  self.get_url() == "https://richup.io/":
+            self.tts("Precisas de entrar numa sala para poderes jogar")
+            return
         try: 
             self.button.bankrupt.click()
             time.sleep(1)
@@ -152,7 +178,6 @@ class Game:
             self.tts("Não é permitido, desistir do jogo neste momento")
 
     def confirm_give_up_game(self):
-        print("Game : confirm_give_up_game")
         try:
             self.button.confirm_bankrupt.click()
             self.tts("Desististe do jogo")
@@ -160,7 +185,6 @@ class Game:
             self.tts("Não é permitido, desistir do jogo neste momento")
 
     def cancel_give_up_game(self):
-        print("Game : cancel_give_up_game")
         try:
             self.button.cancel_bankrupt.click()
             self.tts("Ainda bem que não desististe")

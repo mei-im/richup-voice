@@ -3,7 +3,7 @@ from os import system
 import xml.etree.ElementTree as ET
 import ssl
 import websockets
-from app.utils import random_frase_nao_entendi
+from utils import *
 
 
 from game import Game
@@ -69,7 +69,7 @@ async def message_handler(game: Game, message:str):
         elif intent == "roll_dice": # DONE
             game.roll_dice()
             intent_before = intent
-        elif intent == "end_turn":
+        elif intent == "end_turn": # DONE
             game.end_turn()
             intent_before = intent
         elif intent == "buy_house":
