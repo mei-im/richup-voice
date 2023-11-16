@@ -43,7 +43,6 @@ def random_not_auth_insert_name():
             "Já tens um nome no jogo, não podes mudar enquanto estás numa sala de jogo",
     ]
 
-
 @randomize
 def random_not_create_room():
     return ["Não é permitido, criares uma sala neste momento",
@@ -57,6 +56,33 @@ def random_create_room():
             "Não tens nenhuma sala criada",
             "Não te encontras numa sala", 
             "Não te encontras numa sala, cria uma sala para poderes jogar",
+    ]
+
+@randomize
+def random_not_valid_color():
+    return ["Escolhe uma cor válida",
+            "A cor que escolheste não é válida",
+            "A cor que escolheste não é válida, se não sabes as cores disponíveis, pergunta-me",
+            "A cor que escolheste não é válida, pergunta-me as cores disponíveis",
+            "Escolhe uma cor válida, se não sabes as cores disponíveis, pergunta-me",
+            "Escolhe uma cor válida, se necessitares de ajuda, pergunta-me",
+            "A cor que escolheste não é válida, se necessitares de ajuda, pergunta-me"
+    ]
+
+@randomize
+def random_not_understand_color():
+    return ["Não percebi a cor que disseste, por favor repita",
+            "Podes repetir a cor, não percebi",
+            "Por favor, repita a cor",
+            "Por favor, repita a cor com que quer jogar",
+            "Por favor, repita a cor com que quer ser identificado durante o jogo",
+            "Não percebi a cor, podes repetir",
+            "Não entendi a cor com que quer jogar, podes repetir",
+            "Por favor, diga a cor com que quer jogar",
+            "Por favor, diga a cor com que quer ser identificado durante o jogo",
+            "Desculpa, não percebi com que cor quer jogar",
+            "Desculpa, não percebi, podes repetir",
+            "Repita por favor, não percebi a cor com que quer jogar",
     ]
 
 @randomize

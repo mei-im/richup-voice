@@ -37,7 +37,7 @@ async def message_handler(game: Game, message:str):
             else:
                 game.tts(random_not_understand_name())
             intent_before = intent
-        elif intent == "create_game": # TODO VERIFICAR SE ESTÁ A FUNCIONAR
+        elif intent == "create_game": # DONE
             game.create_game()
             intent_before = intent
         elif intent == "choose_color": # DONE
@@ -50,11 +50,11 @@ async def message_handler(game: Game, message:str):
                         print(f"Color name: {color_name}")
                         game.choose_color(color_name)
                     else:
-                        game.tts("Escolhe uma cor válida")
+                        game.tts(random_not_valid_color())
                 else:
-                    game.tts("Por favor, repita o nome da cor")
+                    game.tts(random_not_understand_color())
             else:
-                game.tts("Por favor, diga o nome da cor")
+                game.tts(random_not_understand_color())
         elif intent == "information_house":
             intent_before = intent
             if message["entities"]:
@@ -73,10 +73,10 @@ async def message_handler(game: Game, message:str):
         elif intent == "start_game":
             game.start_game()
             intent_before = intent
-        elif intent == "roll_dice": # DONE
+        elif intent == "roll_dice": 
             game.roll_dice()
             intent_before = intent
-        elif intent == "end_turn": # DONE
+        elif intent == "end_turn": 
             game.end_turn()
             intent_before = intent
         elif intent == "buy_house":

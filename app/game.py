@@ -33,19 +33,9 @@ class Game:
             self.input.name.send_keys(name)
             self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
             time.sleep(3)
-            self.tts("Já podes criar uma sala privada para ti e para os teus amigos")
+            self.tts("Se ainda não tens uma sala, podes criar uma sala para ti e para os teus amigos")
         except:
             self.tts(random_not_auth_insert_name())
-
-    def join_game(self, name):
-        try:
-            time.sleep(3)
-            self.input.name.send_keys(name)
-            self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
-            time.sleep(3)
-            self.tts("Agora, podes entrar numa sala privada ou pública")
-        except:
-            self.tts("Não é permitido, mudares o teu nome neste momento")
 
     def create_game(self):
         # TODO VER SE É NECESSÁRIO
