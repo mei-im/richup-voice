@@ -3,6 +3,7 @@ from os import system
 import xml.etree.ElementTree as ET
 import ssl
 import websockets
+from app.utils import random_frase_nao_entendi
 
 
 from game import Game
@@ -25,7 +26,7 @@ async def message_handler(game: Game, message:str):
         print(f"Message received/ intent: {message['intent']['name']}")
         intent = message["intent"]["name"]
         if message["intent"]["confidence"] < 0.8:
-            game.tts("Não percebi o que disseste")
+            game.tts(random_frase_nao_entendi())
         elif intent == "insert_name":# TODO IMPLEMENTAR   
             print("Insert name")
             intent_before = intent
@@ -65,7 +66,7 @@ async def message_handler(game: Game, message:str):
         elif intent == "start_game":
             game.start_game()
             intent_before = intent
-        elif intent == "roll_dice":
+        elif intent == "roll_dice": # DONE
             game.roll_dice()
             intent_before = intent
         elif intent == "end_turn":
@@ -99,10 +100,10 @@ async def message_handler(game: Game, message:str):
             print("help")
             # TODO IMPLEMENTAR
         else:      
-            game.tts("Não percebi o que disseste")
+            game.tts(random_frase_nao_entendi())
             print(f"Command not found: {message}")
     else:
-        game.tts("Não percebi o que disseste")
+        game.tts(random_frase_nao_entendi())
         print(f"Command not found: {message}")
 
 
