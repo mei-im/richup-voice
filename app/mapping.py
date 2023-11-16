@@ -197,6 +197,10 @@ class Houses(MapObject):
         return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div/div[9]/div[9]/div[3]/div[1]')
 
 class Colors(MapObject):
+    # TODO MUDAR CORES PARTE 2
+    # /html/body/div[2]/div[4]/div/div[3]/div/div[1]/div/div/div/div[2]/button
+    # /html/body/div[7]/div/div[1]/div/div/div[1]/div/button[1]
+    # /html/body/div[7]/div/div[1]/div/div/div[1]/div/button[12]
 
     @property
     def lime(self):
@@ -236,12 +240,12 @@ class Colors(MapObject):
     
     @property
     def hotpink(self):
-        return self.find_element('/html/body/div[3]/div[4]/div/div[2]/div/div[1]/div[3]/div[1]/div[1]/button[1]')
+        return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div[1]/div[3]/div[1]/div[1]/button[10]')
     
     @property
     def pink(self):
-        return self.find_element('/html/body/div[3]/div[4]/div/div[2]/div/div[1]/div[3]/div[1]/div[1]/button[2]')
+        return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div[1]/div[3]/div[1]/div[1]/button[11]')
     
     @property
     def purple(self):
-        return self.find_element('/html/body/div[3]/div[4]/div/div[2]/div/div[1]/div[3]/div[1]/div[1]/button[3]')
+        return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div[1]/div[3]/div[1]/div[1]/button[12]')

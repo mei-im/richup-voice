@@ -12,19 +12,21 @@ class Game:
         self.browser = Firefox()
         self.browser.get('https://richup.io/')
         self.browser.maximize_window()
+        self.tts = TTS
+        self.tts("Bem vindo ao Monopoly online, um jogo de tabuleiro para toda a família e amigos")
         self.button = Buttons(self.browser)
         self.input = Inputs(self.browser)
         self.house = Houses(self.browser)
         self.colors = Colors(self.browser)
-        self.tts = TTS
-        self.tts("Bem vindo ao Monopoly online, um jogo de tabuleiro para toda a família e amigos")
-        time.sleep(5)
+        time.sleep(4)
         self.button.accept_cookies.click()
         time.sleep(2)
-        self.tts("Para começar, insere o teu nome e cria uma sala para ti e para os teus amigos")
+        self.tts("Para começar, podes inserir o teu nome. E criar uma sala para ti e para os teus amigos")
+
 
     def join_game(self, name):
         try:
+            time.sleep(3)
             self.input.name.send_keys(name)
             self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
             time.sleep(3)
@@ -41,7 +43,9 @@ class Game:
                     self.button.randomize_name.click()
                     self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
                 time.sleep(3)
+                self.tts("A criar uma sala")
                 self.button.create_private_game.click()
+                time.sleep(3)
                 self.tts("Escolha a cor com que quer jogar")
             else:
                 self.tts("Não é permitido, criares uma sala neste momento")
@@ -53,7 +57,11 @@ class Game:
         house = self.house.__getattribute__(house_name)
         house.click()
         self.tts(f"Já consegues ver a informação da propriedade {house_name}")
+        time.sleep(5)
+        house.click()
+        self.tts("A informação da propriedade foi minimizada")
 
+    # DONE
     def choose_color(self, color):
         try: 
             if self.button.join_game_after_color.text.lower() == 'join game':
@@ -62,16 +70,17 @@ class Game:
                 color = self.colors.__getattribute__(color)
                 color.click()
                 self.tts(f"Ficaste com a cor {name_color}")
-                time.sleep(2)
+                time.sleep(3)
                 self.tts("Espera que entre na sala")
-                time.sleep(2)
+                time.sleep(3)
                 self.button.join_game_after_color.click()
+                time.sleep(3)
                 self.tts("Bem vindo ao sua sala")
             else:
-                self.tts("Não podes escolher a cor agora")
+                self.tts("Não é permitido escolheres a cor, neste momento")
                 
         except:
-            self.tts("Não é permitido, mudares a cor neste momento")
+            self.tts("Não é permitido escolheres a cor, enquanto não estás numa sala ou num jogo a decorrer")
 
     def roll_dice(self):
         try: 

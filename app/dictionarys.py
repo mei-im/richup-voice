@@ -72,6 +72,7 @@ colors = {
     "amarelo": "yellow",
     "laranja": "orange",
     "vermelho": "red",
+    "vermelha": "red",
     "azul": "blue",
     "ciano": "cyan",
     "verde": "green",
@@ -85,4 +86,6 @@ colors = {
     "magenta": "hotpink",
     "castanha": "brown",
     "verde lima": "lime",
+    "amarela": "yellow",
+    "roxa": "purple",
 }

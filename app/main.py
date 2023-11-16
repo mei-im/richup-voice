@@ -26,14 +26,13 @@ async def message_handler(game: Game, message:str):
         intent = message["intent"]["name"]
         if message["intent"]["confidence"] < 0.8:
             game.tts("Não percebi o que disseste")
-        elif intent == "insert_name":
-            # TODO IMPLEMENTAR
+        elif intent == "insert_name":# TODO IMPLEMENTAR   
             print("Insert name")
             intent_before = intent
-        elif intent == "create_game":
+        elif intent == "create_game": # TODO VERIFICAR SE ESTÁ A FUNCIONAR
             game.create_game()
             intent_before = intent
-        elif intent == "choose_color":
+        elif intent == "choose_color": # DONE
             intent_before = intent
             if message["entities"]:
                 if len(message["entities"]) > 0:
@@ -43,13 +42,11 @@ async def message_handler(game: Game, message:str):
                         print(f"Color name: {color_name}")
                         game.choose_color(color_name)
                     else:
-                        print("Não foi encontrada a cor")
-                        game.tts("Não foi encontrada a cor")
+                        game.tts("Escolhe uma cor válida")
                 else:
-                    print("Não foi encontrada a cor 2")
-                    game.tts("Não foi encontrada a cor")
+                    game.tts("Por favor, repita o nome da cor")
             else:
-                game.tts("Não foi encontrada a cor")
+                game.tts("Por favor, diga o nome da cor")
         elif intent == "information_house":
             intent_before = intent
             if message["entities"]:
@@ -60,11 +57,11 @@ async def message_handler(game: Game, message:str):
                         print(f"House name: {house_name}")
                         game.list_house_information(house_name)
                     else:
-                        game.tts("Não foi encontrada a propriedade")
+                        game.tts("O jogo não tem essa propriedade")
                 else:
-                    game.tts("Não foi encontrada a propriedade")
+                    game.tts("Por favor, repita o nome da propriedade")
             else:
-                game.tts("Não foi encontrada a propriedade")
+                game.tts("Por favor, diz o nome da propriedade")
         elif intent == "start_game":
             game.start_game()
             intent_before = intent
@@ -123,7 +120,6 @@ async def main():
     
     tts = TTS(FusionAdd=f"https://{HOST}:8000/IM/USER1/APPSPEECH").sendToVoice
     game = Game(TTS=tts)
-
     mmi_cli_out_add = f"wss://{HOST}:8005/IM/USER1/APP"
 
     #SSL config 
@@ -132,6 +128,7 @@ async def main():
     ssl_context.verify_mode = ssl.CERT_NONE
 
     # Connect to websocket
+    
     
     async with websockets.connect(mmi_cli_out_add, ssl=ssl_context) as websocket:
         print("Connected to MMI CLI OUT")
