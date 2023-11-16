@@ -29,7 +29,7 @@ class Game:
     
     def insert_name(self, name): # DONE
         try:
-            self.input.name.send_keys("")
+            self.input.name.reset()
             self.input.name.send_keys(name)
             self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
             time.sleep(3)
@@ -45,15 +45,13 @@ class Game:
         
         try: 
             if self.button.create_private_game:
-                self.input.name.send_keys("")
                 if self.input.name.get_attribute("value") == "":
                     self.tts("Como não inseriste nenhum nome, vou criar um nome aleatório para ti")
                     self.button.randomize_name.click()
                     self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
-                time.sleep(3)
                 self.tts("A criar uma sala")
+                time.sleep(1)
                 self.button.create_private_game.click()
-                time.sleep(3)
                 self.tts("Escolha a cor com que quer jogar")
             else:
                 self.tts(random_not_create_room())
