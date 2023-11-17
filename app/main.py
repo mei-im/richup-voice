@@ -12,7 +12,7 @@ from tts import TTS
 
 HOST = "127.0.0.1"
 not_quit = True
-intent_before = None
+intent_before = ""
 list_intent = ["insert_name", "create_game", "choose_color", "information_house", "start_game", "roll_dice", "end_turn", "buy_house", "leave_prison", "give_up_game", "confirm", "deny", "close_game",
                "list_of_colors", "help"]
 
@@ -104,14 +104,14 @@ async def message_handler(game: Game, message:str):
             global not_quit
             not_quit = False
         elif intent == "list_of_colors": #DONE
-            game.tts("As cores disponíveis são: ")
-            for color in colors:
-                game.tts(color)
+            colors_in_pt =["verde lima", "amarela", "laranja", "vermelho", "azul", "ciano", "verde", "castanha", "magenta", "cor de rosa"]
+            string_colors = ", ".join(colors_in_pt)
+            game.tts(f"As cores disponíveis são: {string_colors}")
             intent_before = intent
         elif intent == "help":
             print("help")
             # TODO IMPLEMENTAR
-        else:      
+        else:
             game.tts(random_not_understand())
             print(f"Command not found: {message}")
     else:
