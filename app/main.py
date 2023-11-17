@@ -11,10 +11,18 @@ from dictionarys import houses,colors
 from tts import TTS
 
 HOST = "127.0.0.1"
+MUTE = False
 not_quit = True
 intent_before = ""
 list_intent = ["insert_name", "create_game", "choose_color", "information_house", "start_game", "roll_dice", "end_turn", "buy_house", "leave_prison", "give_up_game", "confirm", "deny", "close_game",
-               "list_of_colors", "help"]
+               "list_of_colors", "game_info", "help", "mute"]
+
+GAME_INFO = """O RichUp é a adaptação do clássico jogo de tabuleiro que combina estratégia e negociação. 
+            Cada jogador começa com dinheiro e escolhe uma cor para representá-lo no tabuleiro. 
+            O objetivo é adquirir propriedades, construir casas e hotéis, e cobrar aluguer dos adversários.
+            Durante o jogo, os jogadores negociam entre si, podem comprar, vender e trocar propriedades. 
+            O vencedor é o último jogador que não vai à falência. Para ganhar, é essencial tomar decisões financeiras inteligentes, formar alianças e gerir recursos com sabedoria. 
+            Boa sorte!"""
 
 
 async def message_handler(game: Game, message:str):
@@ -27,7 +35,6 @@ async def message_handler(game: Game, message:str):
         print(f"Message received/ intent: {message['intent']['name']}")
         intent = message["intent"]["name"]
         print(f"Intent before: {intent_before}")
-        print( intent == "confirm" and "give_up_game" in intent_before)
         if message["intent"]["confidence"] < 0.8:
             game.tts(random_not_understand())
         elif intent == "insert_name":#DONE  
@@ -107,6 +114,12 @@ async def message_handler(game: Game, message:str):
             colors_in_pt =["verde lima", "amarela", "laranja", "vermelho", "azul", "ciano", "verde", "castanha", "magenta", "cor de rosa"]
             string_colors = ", ".join(colors_in_pt)
             game.tts(f"As cores disponíveis são: {string_colors}")
+            intent_before = intent
+        elif intent == "game_info": # TODO VERIFICAR
+            game.tts(GAME_INFO)
+            intent_before = intent
+        elif intent == "mute":
+            game.tts("mute")
             intent_before = intent
         elif intent == "help":
             print("help")

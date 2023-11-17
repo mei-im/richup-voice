@@ -220,6 +220,15 @@ nlu:
     - Podes fornecer uma lista de cores?
     - Podes fornecer uma lista de cores disponíveis?
 
+- intent: game_info
+  examples: |
+    - Como funciona o jogo?
+    - Não sei como jogar
+    - Quero saber como jogar
+    - Podes me explicar como jogar?
+    - Podes me explicar as regras do jogo?
+    - Quero saber as regras do jogo
+    - Quero saber as regras
 
 # - intent: mute
 #   examples: |

@@ -15,6 +15,7 @@ intents:
 - give_up_game
 - close_game
 - list_of_colors
+- game_info
 # - desligar som 
 # - ativar som do jogo
 # - game_info
