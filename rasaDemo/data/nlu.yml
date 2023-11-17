@@ -20,7 +20,10 @@ nlu:
     - Correto
     - Okay
     - Ok
-    - sim
+    - sim 
+    - sim, quero
+    - sim, por favor
+    - Confirmo
 
 - intent: deny
   examples: |
