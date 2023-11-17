@@ -69,6 +69,10 @@ class Game:
 
     # DONE
     def choose_color(self, color):
+        if self.get_url() == "https://richup.io/":
+            self.tts(random_create_room())
+            return
+        
         try: 
             if self.button.join_game_after_color.text.lower() == 'join game':
                 print("join game")
@@ -89,59 +93,81 @@ class Game:
             self.tts("Não é permitido escolheres a cor, enquanto não estás numa sala ou num jogo a decorrer")
 
     
-    def roll_dice(self): # DONE
+    def roll_dice(self):# DONE
         if self.get_url() == "https://richup.io/":
             self.tts(random_create_room())
             return
-        # TODO PROBLEM JOIN GAME AND GAME NOT STARTED
         try: 
             if self.button.roll_dice.text.lower() == 'roll the dice' or \
                 self.button.roll_dice.text.lower() == 'roll again':
                 self.button.roll_dice.click()
                 self.tts(random_roll_dice())
+            elif self.button.roll_dice.text.lower() == 'start game':
+                self.tts("Precisa de começar o jogo para poder jogar")
             else:
                 self.tts(random_roll_dice_in_turn())
         except: 
-            self.tts(random_roll_dice_not_auth())
+            try:
+                if self.button.join_game_after_color.text.lower() == 'join game':
+                    self.tts("Precisa de entrar na sala para poder jogar")
+                else:
+                    self.tts(random_roll_dice_not_auth())
+            except:
+                self.tts(random_roll_dice_not_auth())
     
-    # DONE
-    def end_turn(self):
+    
+    def end_turn(self):# DONE
         if self.get_url() == "https://richup.io/":
             self.tts(random_create_room())
             return
         
-        # TODO PROBLEM JOIN GAME AND GAME NOT STARTED
         try: 
             if self.button.end_turn.text == 'End turn':
                 self.button.end_turn.click()
                 self.tts(random_end_turn())
+            elif self.button.roll_dice.text.lower() == 'start game':
+                self.tts("Precisa de começar o jogo para poder jogar")
             else:
                 self.tts(random_end_turn_not_auth())
         except:
-            self.tts(random_end_turn_other_player())
+            try:
+                if self.button.join_game_after_color.text.lower() == 'join game':
+                    self.tts("Precisa de entrar na sala para poder jogar")
+                else:
+                    self.tts(random_end_turn_not_auth())
+            except:
+                self.tts(random_end_turn_other_player())
 
-    def buy(self):
+    
+    def buy(self):# DONE
 
         if self.get_url() == "https://richup.io/":
             self.tts(random_create_room())
             return
-        # TODO PROBLEM JOIN GAME AND GAME NOT STARTED
 
         try:
             if "Buy" in self.button.buy.text:
                 self.button.buy.click()
-                self.tts("Adquiriste a propriedade")
+                self.tts(random_buy_house())
             else:
-                self.tts("Não podes comprar nenhuma propriedade por agora")
+                self.tts(random_buy_house_not_auth())
         except:
-            self.tts("Não é permitido, comprares alguma propriedade neste momento")
+            try:
+                if self.button.roll_dice.text.lower() == 'roll the dice' or \
+                    self.button.roll_dice.text.lower() == 'roll again' or \
+                    self.button.roll_dice.text.lower() == 'end turn':
+                    self.tts(random_buy_house_not_auth())
+                else:
+                    self.tts(random_buy_house_not_in_game())
+            except:
+                self.tts(random_buy_house_not_in_game())
 
-    def start_game(self):
+    
+    def start_game(self):# DONE
 
         if self.get_url() == "https://richup.io/":
             self.tts(random_create_room())
             return
-        
         try:
             if self.button.enable_bots:
                 self.button.enable_bots.click()
@@ -150,11 +176,15 @@ class Game:
             time.sleep(3)
             if self.button.start_game.text.lower() == 'start game':
                 self.button.start_game.click()
-                self.tts("O jogo começou!")
-            else:
-                self.tts("O jogo está a decorrer")
+                self.tts(random_start_game())
         except:
-            self.tts("Não é permitido, começar o jogo neste momento")
+            try:
+                if self.button.join_game_after_color.text.lower() == 'join game':
+                    self.tts("Precisa de entrar na sala para poder jogar")
+                else:
+                    self.tts(random_start_game_not_auth())
+            except:
+                self.tts(random_start_game_not_auth())
 
     def leave_prison(self):
 
@@ -172,18 +202,16 @@ class Game:
         except:
             self.tts("Não é permitido, sair da prisão neste momento")
 
-    def give_up_game(self):
-
+    def give_up_game(self): # DONE
         if self.get_url() == "https://richup.io/":
             self.tts(random_create_room())
             return
-        
         try: 
             self.button.bankrupt.click()
             time.sleep(1)
             self.tts("Tem a certeza que quer desistir do jogo?")
         except:
-            self.tts("Não é permitido, desistir do jogo neste momento")
+            self.tts(random_give_up_not_in_game())
 
     def confirm_give_up_game(self):
         try:
@@ -199,5 +227,5 @@ class Game:
         except:
             self.tts("Não é permitido, cancelar a desistência do jogo neste momento")
 
-    def close(self):
+    def close(self): # DONE
         self.browser.close()

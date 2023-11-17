@@ -154,4 +154,60 @@ def random_end_turn_not_auth():
             "Não podes acabar a ronda agora, faz a tua jogada primeiro",
             "Faz a tua jogada primeiro",
             "Não podes acabar a ronda agora",
-            "Não podes acabar a ronda agora, faz a tua jogada primeiro",]
+            "Não podes acabar a ronda agora, faz a tua jogada primeiro",
+        ]
+
+@randomize
+def random_start_game():
+    return [ "O jogo começou",
+            "O jogo começou, boa sorte",
+            "O jogo começou, boa sorte, e diverte-te",
+            "O jogo começou, diverte-te",
+            "O jogo começou, diverte-te, e boa sorte",
+    ]
+
+@randomize
+def random_start_game_not_auth():
+    return [ "Não podes começar o novo jogo",
+            "Desculpa, não podes começar o jogo de novo",
+            "Não é permitindo começar o jogo  enquanto o jogo não acabar",
+            "Desculpa, mas para poderes começar o jogo, tens de acabar o jogo atual",
+            "Não podes começar o jogo enquanto o jogo atual não acabar",
+    ]
+
+@randomize
+def random_buy_house():
+    return [ "A sua compra foi efetuada com sucesso",
+            "A sua compra foi realizada, obrigado",
+            "A sua compra foi realizada, obrigado pela sua compra",
+            "Adequiriu a propriedade",
+            "Adequiriu uma nova propriedade, obrigado pela sua compra",
+            "Adequiriu uma nova propriedade, parabéns",
+            "Adequiriu uma nova propriedade, obrigado",
+            "Compra efetuada com sucesso",
+    ]
+
+@randomize
+def random_buy_house_not_in_game():
+    return [ "Não é permitido comprar uma casa enquanto não estás num jogo",
+            "Desculpa, mas ainda não estás num jogo",
+            "Não podes comprar uma casa enquanto não estás num jogo",
+            "Começa um jogo para poderes comprar uma propriedades",
+    ]
+
+@randomize
+def random_buy_house_not_auth():
+    return [ "Não é a tua vez de comprar uma casa",
+            "Espera por teres a tua oportunidade de comprar uma casa",
+            "Só podes comprar uma nova propriedade se ela estiver disponível e caso tenhas acertado nos dados",
+            "Não podes comprar uma casa enquanto não estiveres na propriedade",
+    ]
+
+
+@randomize
+def random_give_up_not_in_game():
+    return [ "Não é permitido desistir do jogo enquanto não estás num jogo",
+            "Desculpa, mas ainda não estás num jogo",
+            "Não podes desistir do jogo enquanto não estás num jogo",
+            "Começa um jogo para poderes desistir do jogo",
+    ]
