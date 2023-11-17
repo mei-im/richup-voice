@@ -94,9 +94,8 @@ async def message_handler(game: Game, message:str):
             game.confirm_give_up_game()
             game.tts("Podes fechar o jogo, ou continuar a ver o jogo a decorrer.")
             intent_before = intent
-        elif  intent == "deny"and "give_up_game" in intent_before:
+        elif  intent == "deny" and "give_up_game" in intent_before: #DONE
             game.cancel_give_up_game()
-            game.tts("Ainda bem que não desististe. Continua a jogar.")
             intent_before = intent
         elif intent == "close_game":
             game.tts("Obrigado por jogar Richup")

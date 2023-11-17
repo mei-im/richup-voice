@@ -91,7 +91,6 @@ class Game:
                 
         except:
             self.tts("Não é permitido escolheres a cor, enquanto não estás numa sala ou num jogo a decorrer")
-
     
     def roll_dice(self):# DONE
         if self.get_url() == "https://richup.io/":
@@ -115,7 +114,6 @@ class Game:
             except:
                 self.tts(random_roll_dice_not_auth())
     
-    
     def end_turn(self):# DONE
         if self.get_url() == "https://richup.io/":
             self.tts(random_create_room())
@@ -138,7 +136,6 @@ class Game:
             except:
                 self.tts(random_end_turn_other_player())
 
-    
     def buy(self):# DONE
 
         if self.get_url() == "https://richup.io/":
@@ -162,7 +159,6 @@ class Game:
             except:
                 self.tts(random_buy_house_not_in_game())
 
-    
     def start_game(self):# DONE
 
         if self.get_url() == "https://richup.io/":
@@ -214,18 +210,20 @@ class Game:
             self.tts(random_give_up_not_in_game())
 
     def confirm_give_up_game(self): # DONE
+        print("confirm")
         try:
             self.button.confirm_bankrupt.click()
-            self.tts("Desististe do jogo. Obrigado por jogar connosco.")
+            self.tts(random_give_up_confirm())
         except:
+            print("Not in game")
             self.tts(random_give_up_not_in_game())
 
-    def cancel_give_up_game(self):
+    def cancel_give_up_game(self): # DONE
         try:
             self.button.cancel_bankrupt.click()
-            self.tts("Ainda bem que não desististe")
+            self.tts(random_give_up_cancel())
         except:
-            self.tts("Não é permitido, cancelar a desistência do jogo neste momento")
+            self.tts(random_give_up_not_in_game())
 
     def close(self): # DONE
         self.browser.close()

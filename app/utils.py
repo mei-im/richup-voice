@@ -211,3 +211,23 @@ def random_give_up_not_in_game():
             "Não podes desistir do jogo enquanto não estás num jogo",
             "Começa um jogo para poderes desistir do jogo",
     ]
+
+
+@randomize
+def random_give_up_confirm():
+    return [ "Desististe do jogo",
+            "Desististe do jogo, obrigado por jogares",
+            "Desististe do jogo, obrigado por jogares, até à próxima",
+            "Desististe do jogo, obrigado por jogares, espero que tenhas gostado",
+            "Já não fazes parte do jogo",
+            "Já não fazes parte do jogo, obrigado por jogares",
+            "Já não fazes parte do jogo, obrigado por jogares, até à próxima",
+    ]
+
+@randomize
+def random_give_up_cancel():
+    return [ "Ainda bem que não desististe",
+            "Ainda bem que não desististe, continua a jogar",
+            "Vamos continuar a jogar",
+            "Ainda bem que não desististe, continua a jogar, e diverte-te",
+    ]
