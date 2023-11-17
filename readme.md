@@ -30,8 +30,8 @@ $ ./start.bat
 $ ./start_web_app.bat
 ```
 
-## fastapi
+## Run
 
 ```bash
-$ uvicorn main:app --reload
+$ python main.py
 ```
