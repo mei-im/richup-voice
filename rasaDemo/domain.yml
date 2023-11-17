@@ -14,10 +14,11 @@ intents:
 - leave_prison
 - give_up_game
 - close_game
+- list_of_colors
 # - desligar som 
 # - ativar som do jogo
 # - game_info
-# - list_of_colors
+
 # - help_in_game
 
 

@@ -13,7 +13,8 @@ from tts import TTS
 HOST = "127.0.0.1"
 not_quit = True
 intent_before = None
-list_intent = ["insert_name", "create_game", "choose_color", "information_house", "start_game", "roll_dice", "end_turn", "buy_house", "leave_prison", "give_up_game", "confirm", "deny", "close_game", "help"]
+list_intent = ["insert_name", "create_game", "choose_color", "information_house", "start_game", "roll_dice", "end_turn", "buy_house", "leave_prison", "give_up_game", "confirm", "deny", "close_game",
+               "list_of_colors", "help"]
 
 
 async def message_handler(game: Game, message:str):
@@ -97,12 +98,16 @@ async def message_handler(game: Game, message:str):
         elif  intent == "deny" and "give_up_game" in intent_before: #DONE
             game.cancel_give_up_game()
             intent_before = intent
-        elif intent == "close_game":
+        elif intent == "close_game":#DONE
             game.tts("Obrigado por jogar Richup")
             game.close()
             global not_quit
             not_quit = False
-
+        elif intent == "list_of_colors": #DONE
+            game.tts("As cores disponíveis são: ")
+            for color in colors:
+                game.tts(color)
+            intent_before = intent
         elif intent == "help":
             print("help")
             # TODO IMPLEMENTAR
