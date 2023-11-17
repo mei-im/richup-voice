@@ -43,7 +43,7 @@ nlu:
     - Vou jogar como [gui123](name)
     - Jogar como [luis afonso](name)
 
-- intent: create_game
+- intent: create_room
   examples: |
     - Jogo privado
     - Criar um jogo privado
@@ -199,16 +199,16 @@ nlu:
     - Sair do jogo
     - Fechar jogo
 
-# TODO : IMPLEMENTAR ESTAS INTENTS and change
-- intent: help
-  examples: |
-    - Ajuda
-    - Preciso de ajuda
-    - Ajuda-me
-    - Ajuda por favor
-    - Ajuda-me por favor
-    - Preciso de ajuda por favor
-    - Preciso de ajuda, por favor
+# # TODO : IMPLEMENTAR ESTAS INTENTS and change
+# - intent: help
+#   examples: |
+#     - Ajuda
+#     - Preciso de ajuda
+#     - Ajuda-me
+#     - Ajuda por favor
+#     - Ajuda-me por favor
+#     - Preciso de ajuda por favor
+#     - Preciso de ajuda, por favor
 
 - intent: list_of_colors
   examples: |
@@ -240,13 +240,13 @@ nlu:
     - Desliga o som por um tempo
 
 
-# - intent: unmute
-#   examples: |
-#   - Ligar o som
-#   - Ligar o som do jogo
-#   - Por favor, ligar o som do jogo
-#   - Quero ouvir o som do jogo
-#   - Coloca o som do jogo
+- intent: unmute
+  examples: |
+    - Ligar o som
+    - Ligar o som do jogo
+    - Por favor, ligar o som do jogo
+    - Quero ouvir o som do jogo
+    - Coloca o som do jogo
 
 
 

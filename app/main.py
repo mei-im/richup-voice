@@ -13,7 +13,7 @@ from tts import TTS
 HOST = "127.0.0.1"
 not_quit = True
 intent_before = ""
-list_intent = ["insert_name", "create_game", "choose_color", "information_house", "start_game", "roll_dice", "end_turn", "buy_house", "leave_prison", "give_up_game", "confirm", "deny", "close_game",
+list_intent = ["insert_name", "create_room", "choose_color", "information_house", "start_game", "roll_dice", "end_turn", "buy_house", "leave_prison", "give_up_game", "confirm", "deny", "close_game",
                "list_of_colors", "game_info", "help", "mute"]
 
 GAME_INFO = """O RichUp é a adaptação do clássico jogo de tabuleiro que combina estratégia e negociação. 
@@ -45,7 +45,7 @@ async def message_handler(game: Game, message:str):
             else:
                 game.tts(random_not_understand_name())
             intent_before = intent
-        elif intent == "create_game": # DONE
+        elif intent == "create_room": # DONE
             game.create_game()
             intent_before = intent
         elif intent == "choose_color": # DONE
@@ -144,7 +144,6 @@ def process_message(message):
         return command
     
 async def main():
-    
     tts = TTS(FusionAdd=f"https://{HOST}:8000/IM/USER1/APPSPEECH").sendToVoice
     game = Game(TTS=tts)
     mmi_cli_out_add = f"wss://{HOST}:8005/IM/USER1/APP"

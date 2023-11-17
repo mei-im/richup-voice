@@ -4,7 +4,7 @@ intents:
 - confirm
 - deny
 - insert_name
-- create_game
+- create_room
 - choose_color 
 - information_house
 - start_game
@@ -17,8 +17,7 @@ intents:
 - list_of_colors
 - game_info
 - mute
-# - ativar som do jogo
-# - game_info
+- unmute
 
 # - help_in_game
 
