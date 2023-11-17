@@ -13,7 +13,7 @@ from tts import TTS
 HOST = "127.0.0.1"
 not_quit = True
 intent_before = None
-list_intent = ["insert_name", "create_game", "choose_color", "information_house", "start_game", "roll_dice", "end_turn", "buy_house", "leave_prison", "give_up_game", "close_game", "help"]
+list_intent = ["insert_name", "create_game", "choose_color", "information_house", "start_game", "roll_dice", "end_turn", "buy_house", "leave_prison", "give_up_game", "confirm", "deny", "close_game", "help"]
 
 
 async def message_handler(game: Game, message:str):
@@ -25,6 +25,8 @@ async def message_handler(game: Game, message:str):
     elif message["intent"]["name"] in list_intent:
         print(f"Message received/ intent: {message['intent']['name']}")
         intent = message["intent"]["name"]
+        print(f"Intent before: {intent_before}")
+        print( intent == "confirm" and "give_up_game" in intent_before)
         if message["intent"]["confidence"] < 0.8:
             game.tts(random_not_understand())
         elif intent == "insert_name":#DONE  
@@ -70,7 +72,7 @@ async def message_handler(game: Game, message:str):
                     game.tts("Por favor, repita o nome da propriedade")
             else:
                 game.tts("Por favor, diz o nome da propriedade")
-        elif intent == "start_game":
+        elif intent == "start_game": #DONE
             game.start_game()
             intent_before = intent
         elif intent == "roll_dice": #DONE
@@ -85,15 +87,14 @@ async def message_handler(game: Game, message:str):
         elif intent == "leave_prison":
             game.leave_prison()
             intent_before = intent
-        elif intent == "give_up_game":
+        elif intent == "give_up_game": #DONE
             game.give_up_game()
             intent_before = intent
-        elif intent_before == "give_up_game" and intent == "confirm":
+        elif  intent == "confirm" and "give_up_game" in intent_before:
             game.confirm_give_up_game()
-            game.tts("Desististe do jogo. Obrigado por jogar Richup.")
             game.tts("Podes fechar o jogo, ou continuar a ver o jogo a decorrer.")
             intent_before = intent
-        elif intent_before == "give_up_game" and intent == "deny":
+        elif  intent == "deny"and "give_up_game" in intent_before:
             game.cancel_give_up_game()
             game.tts("Ainda bem que não desististe. Continua a jogar.")
             intent_before = intent

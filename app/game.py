@@ -213,12 +213,12 @@ class Game:
         except:
             self.tts(random_give_up_not_in_game())
 
-    def confirm_give_up_game(self):
+    def confirm_give_up_game(self): # DONE
         try:
             self.button.confirm_bankrupt.click()
-            self.tts("Desististe do jogo")
+            self.tts("Desististe do jogo. Obrigado por jogar connosco.")
         except:
-            self.tts("Não é permitido, desistir do jogo neste momento")
+            self.tts(random_give_up_not_in_game())
 
     def cancel_give_up_game(self):
         try:
