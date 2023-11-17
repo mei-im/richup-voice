@@ -230,13 +230,14 @@ nlu:
     - Quero saber as regras do jogo
     - Quero saber as regras
 
-# - intent: mute
-#   examples: |
-#   - Desligar o som
-#   - Desligar o som do jogo
-#   - Por favor, desligar o som do jogo
-#   - Não quero ouvir o som do jogo
-#   - Remove o som do jogo
+- intent: mute
+  examples: |
+    - Desligar o som
+    - Desligar o som do jogo
+    - Por favor, desliga o som por um bocado
+    - Não quero ouvir o som do jogo
+    - Coloca o som do jogo em silêncio
+    - Desliga o som por um tempo
 
 
 # - intent: unmute

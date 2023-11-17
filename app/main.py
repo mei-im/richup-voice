@@ -11,7 +11,6 @@ from dictionarys import houses,colors
 from tts import TTS
 
 HOST = "127.0.0.1"
-MUTE = False
 not_quit = True
 intent_before = ""
 list_intent = ["insert_name", "create_game", "choose_color", "information_house", "start_game", "roll_dice", "end_turn", "buy_house", "leave_prison", "give_up_game", "confirm", "deny", "close_game",
@@ -114,11 +113,14 @@ async def message_handler(game: Game, message:str):
             string_colors = ", ".join(colors_in_pt)
             game.tts(f"As cores disponíveis são: {string_colors}")
             intent_before = intent
-        elif intent == "game_info": # TODO VERIFICAR
+        elif intent == "game_info": # DONE
             game.tts(GAME_INFO)
             intent_before = intent
-        elif intent == "mute":
-            game.tts("mute")
+        elif intent == "mute": # DONE
+            game.mute()
+            intent_before = intent
+        elif intent == "unmute": # DONE
+            game.unmute()
             intent_before = intent
         elif intent == "help":
             print("help")

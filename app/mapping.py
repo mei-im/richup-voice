@@ -77,6 +77,10 @@ class Buttons(MapObject):
     def prison_pay(self):
         return self.find_element('/html/body/div[2]/div[4]/div/div[2]/div/div/div[1]/div/div[2]/div[2]/div[1]/div/div/button')
 
+    @property
+    def mute(self):
+        return self.find_element("/html/body/div[2]/div[4]/div/div[1]/div[1]/div/button[2]")
+    
 class Inputs(MapObject):
     @property
     def name(self):
