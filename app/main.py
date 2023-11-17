@@ -73,7 +73,7 @@ async def message_handler(game: Game, message:str):
         elif intent == "start_game":
             game.start_game()
             intent_before = intent
-        elif intent == "roll_dice": 
+        elif intent == "roll_dice": #DONE
             game.roll_dice()
             intent_before = intent
         elif intent == "end_turn": 

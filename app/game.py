@@ -29,7 +29,8 @@ class Game:
     
     def insert_name(self, name): # DONE
         try:
-            self.input.name.reset()
+            if self.input.name.get_attribute("value") != "":
+                self.input.name.clear()
             self.input.name.send_keys(name)
             self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
             time.sleep(3)
@@ -37,19 +38,14 @@ class Game:
         except:
             self.tts(random_not_auth_insert_name())
 
-    def create_game(self):
-        # TODO VER SE É NECESSÁRIO
-        # if  "https://richup.io/room/" in self.get_url():
-        #     self.tts(random_not_create_room())
-        #     return
-        
+    def create_game(self): # DONE
         try: 
             if self.button.create_private_game:
                 if self.input.name.get_attribute("value") == "":
                     self.tts("Como não inseriste nenhum nome, vou criar um nome aleatório para ti")
                     self.button.randomize_name.click()
                     self.tts("O teu nome no jogo é " + self.input.name.get_attribute("value"))
-                self.tts("A criar uma sala")
+                self.tts("A criar uma sala!")
                 time.sleep(1)
                 self.button.create_private_game.click()
                 self.tts("Escolha a cor com que quer jogar")
@@ -92,8 +88,8 @@ class Game:
         except:
             self.tts("Não é permitido escolheres a cor, enquanto não estás numa sala ou num jogo a decorrer")
 
-    # DONE
-    def roll_dice(self):
+    
+    def roll_dice(self): # DONE
         if self.get_url() == "https://richup.io/":
             self.tts(random_create_room())
             return
@@ -102,11 +98,11 @@ class Game:
             if self.button.roll_dice.text.lower() == 'roll the dice' or \
                 self.button.roll_dice.text.lower() == 'roll again':
                 self.button.roll_dice.click()
-                self.tts("Os dados foram lançados")
+                self.tts(random_roll_dice())
             else:
-                self.tts(random_frase_dados())
+                self.tts(random_roll_dice_in_turn())
         except: 
-            self.tts(random_frase_dados2())
+            self.tts(random_roll_dice_not_auth())
     
     # DONE
     def end_turn(self):
@@ -118,11 +114,11 @@ class Game:
         try: 
             if self.button.end_turn.text == 'End turn':
                 self.button.end_turn.click()
-                self.tts("A tua ronda terminou")
+                self.tts(random_end_turn())
             else:
-                self.tts("Não é a tua vez de acabar a ronda")
+                self.tts(random_end_turn_not_auth())
         except:
-            self.tts("Outro jogador ainda não acabou a sua ronda")
+            self.tts(random_end_turn_other_player())
 
     def buy(self):
 
