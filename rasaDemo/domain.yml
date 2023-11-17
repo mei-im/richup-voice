@@ -18,8 +18,7 @@ intents:
 - game_info
 - mute
 - unmute
-
-# - help_in_game
+- help
 
 
 entities:

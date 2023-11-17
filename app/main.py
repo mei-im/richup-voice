@@ -14,7 +14,7 @@ HOST = "127.0.0.1"
 not_quit = True
 intent_before = ""
 list_intent = ["insert_name", "create_room", "choose_color", "information_house", "start_game", "roll_dice", "end_turn", "buy_house", "leave_prison", "give_up_game", "confirm", "deny", "close_game",
-               "list_of_colors", "game_info", "help", "mute"]
+               "list_of_colors", "game_info", "help", "mute", "unmute"]
 
 GAME_INFO = """O RichUp é a adaptação do clássico jogo de tabuleiro que combina estratégia e negociação. 
             Cada jogador começa com dinheiro e escolhe uma cor para representá-lo no tabuleiro. 
@@ -33,7 +33,7 @@ async def message_handler(game: Game, message:str):
     elif message["intent"]["name"] in list_intent:
         print(f"Message received/ intent: {message['intent']['name']}")
         intent = message["intent"]["name"]
-        if message["intent"]["confidence"] < 0.8:
+        if message["intent"]["confidence"] < 0.7:
             game.tts(random_not_understand())
         elif intent == "insert_name":#DONE  
             if message["entities"]:
@@ -117,14 +117,11 @@ async def message_handler(game: Game, message:str):
             game.tts(GAME_INFO)
             intent_before = intent
         elif intent == "mute": # DONE
-            game.mute()
+            game.mute_func()
             intent_before = intent
         elif intent == "unmute": # DONE
             game.unmute()
             intent_before = intent
-        elif intent == "help":
-            print("help")
-            # TODO IMPLEMENTAR
         else:
             game.tts(random_not_understand())
             print(f"Command not found: {message}")

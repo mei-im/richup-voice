@@ -14,6 +14,7 @@ class Game:
         self.browser.get('https://richup.io/')
         self.browser.maximize_window()
         self.mute = False
+        self.tts_func = TTS
         self.tts = TTS
         self.tts("Bem vindo ao Monopoly online, um jogo de tabuleiro para toda a família e amigos")
         self.button = Buttons(self.browser)
@@ -229,24 +230,26 @@ class Game:
     def close(self): # DONE
         self.browser.close()
 
-    def mute(self): # IN PROGRESS
+    def mute_func(self): #DONE
+        def do_nothing(message):
+            pass
         if self.mute:
             self.tts("O som já está desativado")
-            return
-        if self.get_url() == "https://richup.io/":
-            self.tts("Precisas de entra numa sala para conseguir silenciar o jogo")
             return
         self.tts("O jogo vai ser silenciado, para voltar a ouvir o jogo, peça para sair do modo silencioso")
         self.button.mute.click()
         self.mute = True
+        time.sleep(3)
+        self.tts = do_nothing
 
-    def unmute(self): # IN PROGRESS
+    def unmute(self): #DONE
         if not self.mute:
             self.tts("O som não está desativado")
             return
-        if self.get_url() == "https://richup.io/":
-            self.tts("Precisas de entra numa sala para conseguir silenciar o jogo")
-            return
-        self.button.mute.click()
-        self.tts("O som foi ativado")
+        self.button.unmute.click()
         self.mute = False
+        self.tts = self.tts_func
+        time.sleep(3)
+        self.tts("O jogo já não está silenciado")
+
+    

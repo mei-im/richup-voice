@@ -80,6 +80,10 @@ class Buttons(MapObject):
     @property
     def mute(self):
         return self.find_element("/html/body/div[2]/div[4]/div/div[1]/div[1]/div/button[2]")
+
+    @property
+    def unmute(self):
+        return self.find_element("/html/body/div[2]/div[4]/div/div[1]/div[1]/div/button[2]")   
     
 class Inputs(MapObject):
     @property

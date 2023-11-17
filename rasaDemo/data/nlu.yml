@@ -199,16 +199,16 @@ nlu:
     - Sair do jogo
     - Fechar jogo
 
-# # TODO : IMPLEMENTAR ESTAS INTENTS and change
-# - intent: help
-#   examples: |
-#     - Ajuda
-#     - Preciso de ajuda
-#     - Ajuda-me
-#     - Ajuda por favor
-#     - Ajuda-me por favor
-#     - Preciso de ajuda por favor
-#     - Preciso de ajuda, por favor
+# TODO : IMPLEMENTAR ESTAS INTENTS and change
+- intent: help
+  examples: |
+    - Ajuda
+    - Preciso de ajuda
+    - Ajuda-me
+    - Ajuda por favor
+    - Ajuda-me por favor
+    - Preciso de ajuda por favor
+    - Preciso de ajuda, por favor
 
 - intent: list_of_colors
   examples: |
@@ -247,6 +247,11 @@ nlu:
     - Por favor, ligar o som do jogo
     - Quero ouvir o som do jogo
     - Coloca o som do jogo
+    - Ligar o som
+    - Por favor, liga o som
+    - Quero ouvir o som do jogo
+    - Coloca o som do jogo
+    - Ative o som
 
 
 
