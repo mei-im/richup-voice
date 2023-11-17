@@ -34,7 +34,6 @@ async def message_handler(game: Game, message:str):
     elif message["intent"]["name"] in list_intent:
         print(f"Message received/ intent: {message['intent']['name']}")
         intent = message["intent"]["name"]
-        print(f"Intent before: {intent_before}")
         if message["intent"]["confidence"] < 0.8:
             game.tts(random_not_understand())
         elif intent == "insert_name":#DONE  
