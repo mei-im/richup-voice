@@ -1,4 +1,4 @@
-Set-Location -Path .\IM
+Set-Location -Path .\mmiframeworkV2
 Start-Process -FilePath .\start.bat
 
 Set-Location -Path ..\FusionEngine
